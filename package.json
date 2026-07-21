@@ -1,10 +1,10 @@
 {
-  "name": "project-codex",
+  "name": "bookfellow",
   "private": true,
   "packageManager": "pnpm@10.12.4",
   "scripts": {
     "prepare": "husky",
-    "gen:queue": "pnpm --dir codex-www gen:queue"
+    "gen:queue": "pnpm --dir bookfellow-www gen:queue"
   },
   "devDependencies": {
     "husky": "^9.1.7"

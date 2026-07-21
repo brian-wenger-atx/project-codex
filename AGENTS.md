@@ -1,14 +1,15 @@
-# Project Codex
+# Bookfellow
 
 | Name | What |
 |------|------|
 | **Codex** (Docking Bay) | Personal reading companion in homelab `www` |
-| **Project Codex** | This venture — commercial companion product |
+| **Bookfellow** (`bookfellow.io`) | This venture — commercial companion product |
+| **Project Codex** | Retired temporary working title |
 
 ## Silos
 
-- **codex-business** — may write that folder only when opened as workspace
-- **codex-www** — may write that folder only when opened as workspace
+- **bookfellow-business** — may write that folder only when opened as workspace
+- **bookfellow-www** — may write that folder only when opened as workspace
 - Shared commands: `../cursor-shared/` (symlinked into each silo’s `.cursor/`)
 
 ## Out of scope (env plan)

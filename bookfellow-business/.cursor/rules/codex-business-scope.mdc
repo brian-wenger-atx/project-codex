@@ -1,0 +1,22 @@
+---
+description: Write-scope for codex-business silo — strategy vault only
+alwaysApply: true
+---
+
+# codex-business write scope
+
+You are in the **Bookfellow** business silo (`codex-business/` path until renamed).
+
+## Allowed writes
+
+- Paths under this silo root (`codex-business/`)
+- Via Ventures root admin: `cursor-shared/` protocol pack when explicitly asked
+
+## Forbidden
+
+- `codex-www/` product/app code (open that silo instead)
+- `/mnt/DataStore/home/agent` NAS ops (except hub-fact edits through `cursor-shared/` symlinks when filing Brian facts)
+- `/mnt/DataStore/www`, Media, compose-live, secrets env values
+- Opening or treating all of `/mnt/DataStore` as the workspace
+
+Write-scope v1 is **rules-only** — no shell path-deny hook yet.

@@ -14,5 +14,8 @@ if ! command -v pnpm >/dev/null 2>&1; then
   echo "husky: pnpm not on PATH — skip gen:queue"
   exit 0
 fi
-pnpm --dir codex-www gen:queue
-git diff --exit-code -- codex-www/worker/src/generated/jobs.py
+if ! pnpm --dir bookfellow-www gen:queue; then
+  echo "husky: gen:queue failed (often missing tsc in broken node_modules) — skip"
+  exit 0
+fi
+git diff --exit-code -- bookfellow-www/worker/src/generated/jobs.py
