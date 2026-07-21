@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "hooks": {
+    "postToolUse": [
+      {
+        "command": "/mnt/DataStore/.cursor/hooks/intake-fold-guard.sh",
+        "matcher": "Write"
+      },
+      {
+        "command": "/mnt/DataStore/.cursor/hooks/intake-fold-guard.sh",
+        "matcher": "StrReplace"
+      }
+    ]
+  }
+}

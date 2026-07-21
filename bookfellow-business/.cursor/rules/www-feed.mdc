@@ -12,13 +12,14 @@ alwaysApply: true
 - Canonical handoff for www builders: `docs/www-feed.md`
 - When strategy changes affect the product (direction, pricing, supply, UX intent, open questions) → update `docs/www-feed.md` **same turn** (Meta date + Changelog line)
 - When Brian states product ideas in a **business** chat → add/update **Product proposals** (and lane proposals if useful) on `www-feed.md` **same turn** — do not wait for Brian to re-type them in www
-- Graduate backlog stubs → Ready for planning only when Brian says so explicitly **or** when he clearly authorizes agents to pass items as Ready/proposals
-- **Never** edit `codex-www/` (pins, lanes, plans, product code) from this silo
+- Graduate backlog stubs → Ready for planning only when Brian says so explicitly **or** when he clearly authorizes agents to pass items as Ready/proposals (**graduate-to-Ready-on-feed** — do not invent Ready from keyword match)
+- **Intake fold on business plans:** scan → fit → **promote-into-plan** → fold (ideas backlog, dashboard pins, www-feed as scan/Ready shortcut). Max 5 folds. Does **not** auto-create Ready rows.
+- **Never** edit `bookfellow-www/` (pins, lanes, plans, product code) from this silo
 - Lane names in the feed are **proposals** until www adopts them in `lanes.md`
 
 ## Inbound (www → business)
 
-- Www-owned: `/mnt/DataStore/Ventures/project-codex/codex-www/docs/business-feed.md` (schema in contract)
+- Www-owned: `/mnt/DataStore/Ventures/bookfellow/bookfellow-www/docs/business-feed.md` (schema in contract)
 - On resume / before foundation–GTM–monetization work → **read** business-feed (if present)
 - When new signals appear → update affected `docs/` and **refresh dashboard pins** same turn (`strategy-queue.md` + sector files; `build-order.md` if plans change); update `product-signals.md` harvest
 - Do not write the www vault; if feed is missing, keep a Ready row on www-feed asking www to create it

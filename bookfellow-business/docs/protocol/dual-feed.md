@@ -1,6 +1,6 @@
 # Dual feed contract (strategy ↔ product)
 
-**SoT** for bidirectional handoff between `codex-business` and `codex-www`. Agents keep feeds current; Brian does not maintain them. No shared registry / no hub-work-queue clone.
+**SoT** for bidirectional handoff between `bookfellow-business` and `bookfellow-www`. Agents keep feeds current; Brian does not maintain them. No shared registry / no hub-work-queue clone.
 
 **Build order (aligned 2026-07-20):** `dual-feed-business` (this contract) → `dual-feed-www` (`business-feed.md`).
 
@@ -8,8 +8,8 @@
 
 | Direction | File | Who writes | Who reads |
 |-----------|------|------------|-----------|
-| Strategy → product | `codex-business/docs/www-feed.md` | Business | Www (before product planning / lane work) |
-| Product → strategy | `codex-www/docs/business-feed.md` | Www | Business (resume / foundation–GTM–money) |
+| Strategy → product | `bookfellow-business/docs/www-feed.md` | Business | Www (before product planning / lane work) |
+| Product → strategy | `bookfellow-www/docs/business-feed.md` | Www | Business (resume / foundation–GTM–money) |
 
 **Neither silo writes the other’s vault.**
 
@@ -92,8 +92,11 @@ Dated lines only.
 ### Www inbound
 
 - Read `www-feed.md` before product planning
-- Mirror **Lane proposals** into `lanes.md` Pending
-- **Product proposals / Ready:** habit-only — graduate into www plans when Brian asks; no Pending Product proposals mirror table
+- Consolidate **Lane proposals** into `lanes.md` (Adopted / Inferred / Later) — no Pending mirror table
+- **Two verbs:**
+  - **graduate-to-Ready-on-feed** — business/Brian authorize Ready rows on `www-feed.md` (www never invents Ready)
+  - **promote-into-plan** — at plan time, www scans feed Ready (shortcut) **plus** backlog, lanes, remnant registry paths; fit-check → fold into the plan (max 5). No prior Ready move required for backlog/lanes that fit.
+- Evidence: `intake_considered` + `intake_folded` on new www plans — [intake-fold.md](/mnt/DataStore/home/agent/docs/runbooks/intake-fold.md)
 
 ## Pin refresh lists
 
@@ -113,6 +116,6 @@ Dated lines only.
 
 | Plan | Role |
 |------|------|
-| [dual-feed-business](../../.cursor/plans/2026-07-20-dual-feed-business.plan.md) | This contract + business habits |
-| [dual-feed-www](/mnt/DataStore/Ventures/project-codex/codex-www/.cursor/plans/2026-07-20-dual-feed-www.plan.md) | Creates `business-feed.md` + www habits |
-| [strategy-www-feed](../../.cursor/plans/2026-07-20-strategy-www-feed.plan.md) | Original one-way feed (Built; extended by dual feed) |
+| [dual-feed-business](../../.cursor/plans/archive/2026-07-20-dual-feed-business.plan.md) | This contract + business habits (archived) |
+| [dual-feed-www](/mnt/DataStore/Ventures/bookfellow/bookfellow-www/.cursor/plans/2026-07-20-dual-feed-www.plan.md) | Creates `business-feed.md` + www habits |
+| [strategy-www-feed](../../.cursor/plans/archive/2026-07-20-strategy-www-feed.plan.md) | Original one-way feed (Built + archived; extended by dual feed) |

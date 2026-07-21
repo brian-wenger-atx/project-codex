@@ -8,32 +8,38 @@ alwaysApply: true
 ## Pins (this silo)
 
 - `.cursor/build-order.md` — product build sequence SoT
-- `.cursor/lanes.md` — adopted website lanes + generated Pending proposals
+- `.cursor/lanes.md` — adopted lanes + www-curated **Inferred sequence** (not a feed Pending mirror)
 - `.cursor/backlog.md` — www deferred / next requirements (Brian prefs)
 
-Update **build-order + lanes** same turn when plans are created/reordered/Built/shipped or lanes change. Update **backlog** same turn when Brian adds requirements or priority. No hub-work-queue clone — one thin sync script only (below).
+Update **build-order + lanes** same turn when plans are created/reordered/Built/shipped or lanes change. Update **backlog** same turn when Brian adds requirements or priority.
 
 ## Strategy feed (read-only from www)
 
 Before product planning or lane changes — and whenever Brian asks to look at / check the feed — read:
 
-`/mnt/DataStore/Ventures/project-codex/codex-business/docs/www-feed.md`
+`/mnt/DataStore/Ventures/bookfellow/bookfellow-business/docs/www-feed.md`
 
-### Feed → Pending (automatic — tier C)
+### Feed → lanes (habit)
 
-1. **Hook (primary):** `.cursor/hooks/www-feed-lanes-sync.sh` runs on Read / beforeReadFile / shell touching `www-feed.md` and applies `scripts/www-lanes-sync.py` (fails open).
-2. **Script (manual / resume):** `python3 scripts/www-lanes-sync.py` — rewrite Pending; `--check` exits 1 on drift.
-3. Do not hand-edit inside `<!-- www-lanes-sync:begin/end -->` markers.
+1. Read feed **Lane proposals** + Product proposals / Ready before planning.
+2. Www owns consolidation in `.cursor/lanes.md` (**Adopted** + **Inferred sequence** + **Later / park**). Do **not** auto-mirror feed rows into a Pending table (`scripts/www-lanes-sync.py` is retired no-op).
+3. On adopt: move into Adopted, refresh Inferred sequence, note business to mark feed status `adopted in www`.
 
-Feed lane names are **proposals** until adopted into the adopted-lanes table in `lanes.md`. On adopt: move into adopted table, re-run sync (or let the next feed read sync), and note for a business session to mark the feed proposal `adopted in www`.
+### Intake fold (plan create / discuss)
 
-### Product proposals / Ready (habit-only)
+**Process (same as other silos):** broad **scan → fit → promote-into-plan → fold**.
 
-Treat **Product proposals** and **Ready for planning** as intentional handoffs — graduate into www plans when Brian asks. Do **not** mirror a Pending Product proposals table. Do not re-decide from scratch unless blocked. Only Ready (and Brian-authorized proposals) become plan candidates — not backlog stubs.
+- **Scan:** `www-feed.md` (Ready = shortcut) + `.cursor/backlog.md` + `.cursor/lanes.md` + build-order + remnant paths in hub `scripts/intake-sources.yaml` (no `docs/` walk)
+- **Fit:** if an item belongs in *this* plan, promote and fold (max 5); related → cite; blocked → leave
+- **Ready / authorized proposals:** already-graduated shortcut — still fold when they fit
+- **Do not** invent Ready rows on business `www-feed.md` (www never writes that file)
+- **Verbs:** *promote-into-plan* ≠ *graduate-to-Ready-on-feed* (business/Brian only for Ready rows)
+
+Evidence on every new plan: `intake_considered` + `intake_folded` + `## Also brought in (intake)`. CLI: `python3 /mnt/DataStore/home/agent/scripts/intake-fold.py --topic "…"`.
 
 ## Reverse feed (www → business)
 
-Www owns `docs/business-feed.md`. Business reads; www never edits `codex-business/`.
+Www owns `docs/business-feed.md`. Business reads; www never edits `bookfellow-business/`.
 
 **Same turn** when an event passes the content filter:
 
@@ -46,12 +52,12 @@ Www owns `docs/business-feed.md`. Business reads; www never edits `codex-busines
 
 Write the matching section + bump Meta + Changelog. Refresh `.cursor/build-order.md` / `lanes.md` when those signals affect pins.
 
-Schema SoT (read-only): `/mnt/DataStore/Ventures/project-codex/codex-business/docs/protocol/dual-feed.md`
+Schema SoT (read-only): `/mnt/DataStore/Ventures/bookfellow/bookfellow-business/docs/protocol/dual-feed.md`
 
 ## Must not
 
-- Edit `codex-business/` from a www-only workspace (switch silo / Ventures root)
-- Treat backlog stubs as Ready — only feed **Ready for planning** items become www plan candidates
-- Leave `lanes.md` Pending stale after reading www-feed
-- Hand-edit the generated Pending block (use sync / adopt flow)
+- Edit `bookfellow-business/` from a www-only workspace (switch silo / Ventures root)
+- Invent Ready rows on business `www-feed.md` (promote-into-plan does not create Ready)
+- Skip backlog/lanes/remnants when planning — they are in the intake scan
+- Reintroduce an auto-generated Pending mirror that fights the inferred map
 - Dump routine eng noise into `docs/business-feed.md`

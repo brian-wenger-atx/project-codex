@@ -18,6 +18,16 @@
         "command": ".cursor/hooks/www-feed-lanes-sync.sh",
         "matcher": "www-feed\\.md"
       }
+    ],
+    "postToolUse": [
+      {
+        "command": "/mnt/DataStore/.cursor/hooks/intake-fold-guard.sh",
+        "matcher": "Write"
+      },
+      {
+        "command": "/mnt/DataStore/.cursor/hooks/intake-fold-guard.sh",
+        "matcher": "StrReplace"
+      }
     ]
   }
 }
