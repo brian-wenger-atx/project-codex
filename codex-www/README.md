@@ -2,7 +2,7 @@
 
 Product / website silo for **Project Codex**.
 
-**Status:** P3 lab — Next.js on `:4003` with Redis, Postgres, PgBouncer, and job-claiming worker. Stack: [`docs/stack.md`](docs/stack.md).
+**Status:** P4 lab — foundation shell on `:4003` (sidebar landscape ≥1024 / hamburger elsewhere). Stack: [`docs/stack.md`](docs/stack.md).
 
 | Path | Purpose |
 |------|---------|

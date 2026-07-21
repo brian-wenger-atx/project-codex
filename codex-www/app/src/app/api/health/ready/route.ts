@@ -16,7 +16,7 @@ export async function GET() {
     return NextResponse.json({
       ok: true,
       service: "projectcodex-web",
-      phase: "P3",
+      phase: "P4",
       db: "ok",
     });
   } catch (err) {

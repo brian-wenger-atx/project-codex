@@ -11,13 +11,14 @@ Update same turn when Brian adds prefs or priority.
 | 1 | **Mobile-first web (required)** — iPhone + iPad responsive layout from day 1 | Companion is consumed on phone/tablet; must not ship desktop-only. Viewport, fluid layout, Safari safe-areas, touch targets. Bake into **P2 scaffold** and every UI Build after. | **required · next** — not optional polish |
 | 2 | Foundation **P2** — Next.js scaffold + hard-rule stubs | Unlocks real app behind `:4003` | **shipped 2026-07-20** |
 | 3 | Foundation **P3** — portable multi-service compose | Postgres+PgBouncer, SQL migrations, job_id claim | **shipped 2026-07-20** |
-| 4 | Foundation **P4** — shell placeholders | After P3 | **next** |
+| 4 | Foundation **P4** — app shell (last phase of foundation plan) | Dark sidebar landscape ≥1024; hamburger phone/portrait; Home/Health/Queue | **shipped 2026-07-20** |
+| 5 | Lane stubs + product SPs | security / user-control / ai-module / feed proposals | **separate plans** — not foundation P5–P7 |
 
 ## Deferred (www)
 
 | Item | Notes |
 |------|-------|
-| P4+ foundation shell / security / user-control / ai-module stubs | After P3 |
+| Security / user-control / AI-module stubs | Separate www plans after foundation P4 |
 | SP1–SP6 product surfaces | Separate plans when Ready / Brian asks |
 | Cloud cutover | Separate plan; NAS lab only until then |
 
@@ -29,4 +30,6 @@ Update same turn when Brian adds prefs or priority.
 
 ## Changelog
 
+- 2026-07-20 — P4 chrome: Monarch-style sidebar landscape/desktop; hamburger portrait + iPhone (no black sidebar in portrait)
+- 2026-07-20 — Foundation plan ends at P4; lanes/SPs = separate plans
 - 2026-07-20 — Mobile-first required + next; native apps = other silo (business already noted)

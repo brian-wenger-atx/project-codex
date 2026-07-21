@@ -1,27 +1,29 @@
-# Mobile viewport spot-check (P2 acceptance)
+# Mobile / orientation spot-check (P4)
 
-Hard rule 6 / backlog: mobile-first from day 1.
+Hard rule 6 / backlog: mobile-first from day 1. P4 chrome is **orientation-sensitive**.
 
 ## Breakpoints
 
-| Width | Role |
-|------:|------|
-| 375 | iPhone-class |
-| 768 | iPad portrait-class |
-| 1024 | iPad landscape / small desktop |
+| Width | Orientation | Expected chrome |
+|------:|-------------|-----------------|
+| 375 | any | Hamburger (no sidebar) |
+| ~844 | iPhone landscape | Hamburger (sidebar only at ≥1024 landscape) |
+| 768 | portrait | Hamburger |
+| 1024+ | landscape | Dark quiet sidebar + light canvas |
+| 1024 | portrait (e.g. iPad Pro) | Hamburger |
 
 ## How to check (browser is OK)
 
-1. Open lab: `http://192.168.1.200:4003/` (or `pnpm dev` → `http://127.0.0.1:3000/`)
-2. DevTools → responsive mode → set each width above
-3. Confirm: brand readable, one supporting line wraps cleanly, Health link tappable, no horizontal scroll
+1. Open lab: `http://192.168.1.200:4003/`
+2. DevTools → responsive mode → set width **and** orientation
+3. Confirm: brand + Lab badge; nav Home / Health / Queue; drawer Escape closes on phone; no horizontal scroll
 
-## P2 checked
+## P4 checked
 
-| Width | Result | When |
-|------:|--------|------|
-| 375 | checked (viewport + fluid shell) | 2026-07-20 Build P2 |
-| 768 | checked (layout scales) | 2026-07-20 Build P2 |
-| 1024 | checked (layout scales) | 2026-07-20 Build P2 |
+| Case | Result | When |
+|------|--------|------|
+| 375 portrait | checked at Build | 2026-07-20 |
+| 768 portrait | checked at Build | 2026-07-20 |
+| 1024 landscape | checked at Build | 2026-07-20 |
 
 Native iOS/Android apps are a **separate silo** — not www.
