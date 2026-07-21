@@ -14,9 +14,9 @@ No hub-work-queue Python clone.
 
 ## Active / next (this silo)
 
-_(none — foundation closed 2026-07-20)_
+_(none)_
 
-Lab: `http://192.168.1.200:4003/` · stack [`docs/stack.md`](../docs/stack.md) · containers [`docs/runbooks/containers.md`](../docs/runbooks/containers.md)
+Lab: `http://192.168.1.200:4003/` · Public: **https://bookfellow.io/** · stack [`docs/stack.md`](../docs/stack.md)
 
 **Standing:** mobile-first web (iPhone/iPad) on every UI Build. **Next plans:** security / user-control / ai-module / product SPs when Ready or Brian asks (separate plans).
 
@@ -31,6 +31,8 @@ _(empty)_
 | 1 | www-queue-lanes | foundation | `.cursor/plans/2026-07-20-www-queue-lanes.plan.md` | shipped 2026-07-20 |
 | 2 | dual-feed-www | foundation | `.cursor/plans/2026-07-20-dual-feed-www.plan.md` | shipped 2026-07-20 |
 | 3 | www-foundation-stack | foundation | `/mnt/DataStore/home/agent/.cursor/plans/www_foundation_stack_71f9027b.plan.md` | **complete** P0–P4 2026-07-20 |
+| 4 | bookfellow-placeholder-site | placeholder-site | `.cursor/plans/archive/2026-07-21-bookfellow-placeholder-site.plan.md` | **closed** 2026-07-21 — https://bookfellow.io |
+| 5 | privacy-page-professional | placeholder-site | `.cursor/plans/archive/2026-07-21-privacy-page-professional.plan.md` | **shipped** 2026-07-21 — P25 privacy policy on placeholder |
 
 ## Habit
 
