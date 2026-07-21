@@ -1,0 +1,32 @@
+# Venture secrets — never commit real values
+**/secrets/*.env
+**/secrets/**/*.env
+!**/*.env.example
+!**/.env.example
+
+# Node / Next (www)
+**/node_modules/
+**/.next/
+**/out/
+**/.pnpm-store/
+**/*.tsbuildinfo
+
+# Python
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+
+# Env locals
+**/.env
+**/.env.local
+**/.env.*.local
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+
+# Cursor hook debug captures
+**/.cursor/hooks/.*-last-input.json

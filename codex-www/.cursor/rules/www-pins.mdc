@@ -1,0 +1,57 @@
+---
+description: Www product pins + bidirectional feed habits
+alwaysApply: true
+---
+
+# Www pins + feed handoff
+
+## Pins (this silo)
+
+- `.cursor/build-order.md` — product build sequence SoT
+- `.cursor/lanes.md` — adopted website lanes + generated Pending proposals
+- `.cursor/backlog.md` — www deferred / next requirements (Brian prefs)
+
+Update **build-order + lanes** same turn when plans are created/reordered/Built/shipped or lanes change. Update **backlog** same turn when Brian adds requirements or priority. No hub-work-queue clone — one thin sync script only (below).
+
+## Strategy feed (read-only from www)
+
+Before product planning or lane changes — and whenever Brian asks to look at / check the feed — read:
+
+`/mnt/DataStore/Ventures/project-codex/codex-business/docs/www-feed.md`
+
+### Feed → Pending (automatic — tier C)
+
+1. **Hook (primary):** `.cursor/hooks/www-feed-lanes-sync.sh` runs on Read / beforeReadFile / shell touching `www-feed.md` and applies `scripts/www-lanes-sync.py` (fails open).
+2. **Script (manual / resume):** `python3 scripts/www-lanes-sync.py` — rewrite Pending; `--check` exits 1 on drift.
+3. Do not hand-edit inside `<!-- www-lanes-sync:begin/end -->` markers.
+
+Feed lane names are **proposals** until adopted into the adopted-lanes table in `lanes.md`. On adopt: move into adopted table, re-run sync (or let the next feed read sync), and note for a business session to mark the feed proposal `adopted in www`.
+
+### Product proposals / Ready (habit-only)
+
+Treat **Product proposals** and **Ready for planning** as intentional handoffs — graduate into www plans when Brian asks. Do **not** mirror a Pending Product proposals table. Do not re-decide from scratch unless blocked. Only Ready (and Brian-authorized proposals) become plan candidates — not backlog stubs.
+
+## Reverse feed (www → business)
+
+Www owns `docs/business-feed.md`. Business reads; www never edits `codex-business/`.
+
+**Same turn** when an event passes the content filter:
+
+| Include | Skip |
+|---------|------|
+| User/commercial-meaningful **Shipped** | Routine eng noise (refactors, lint, local DX) |
+| **Stumbles** hitting cost / rights / timeline / feasibility | Pin housekeeping unless commercially relevant |
+| **Learnings** that change money or positioning | |
+| **Asks-back** to business | |
+
+Write the matching section + bump Meta + Changelog. Refresh `.cursor/build-order.md` / `lanes.md` when those signals affect pins.
+
+Schema SoT (read-only): `/mnt/DataStore/Ventures/project-codex/codex-business/docs/protocol/dual-feed.md`
+
+## Must not
+
+- Edit `codex-business/` from a www-only workspace (switch silo / Ventures root)
+- Treat backlog stubs as Ready — only feed **Ready for planning** items become www plan candidates
+- Leave `lanes.md` Pending stale after reading www-feed
+- Hand-edit the generated Pending block (use sync / adopt flow)
+- Dump routine eng noise into `docs/business-feed.md`

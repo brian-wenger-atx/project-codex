@@ -1,0 +1,17 @@
+---
+description: Project Codex stack scaffolding hard rules (P0 lock)
+alwaysApply: true
+---
+
+# Stack hard rules
+
+Canonical detail: [`docs/stack.md`](../../docs/stack.md).
+
+When scaffolding or touching billing, queues, DB, or AI workers:
+
+1. **BullMQ** for Node and Python. TypeScript job interfaces are SSOT; codegen → Pydantic. Do not hand-edit generated models.
+2. Stripe webhooks: `await req.text()` only — never `req.json()`. Verify signature on raw bytes.
+3. Postgres client: global singleton. Compose includes PgBouncer in front of Postgres.
+4. Schema: explicit SQL migrations (indexes, composite keys, entitlements). ORM is not schema authority.
+5. AI workers: claim/lock `job_id` in Postgres before any Gemini call so Redis retries are idempotent.
+6. **Mobile-first required** (iPhone + iPad) from day 1 — viewport, fluid layout, Safari safe-areas, touch targets. Native apps are a later silo, not this one.

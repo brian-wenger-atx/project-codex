@@ -1,0 +1,30 @@
+# Hook debug captures (local)
+.cursor/hooks/.www-feed-lanes-sync-last-input.json
+.cursor/hooks/.*-last-input.json
+
+# Node / Next
+node_modules/
+.next/
+out/
+dist/
+*.tsbuildinfo
+.pnpm-store/
+
+# Python / uv
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Env (examples OK)
+.env
+.env.local
+.env.*.local
+!**/.env.example
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/

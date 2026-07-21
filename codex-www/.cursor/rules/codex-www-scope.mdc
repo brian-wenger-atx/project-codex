@@ -1,0 +1,29 @@
+---
+description: Write-scope for codex-www silo — product/www + projectcodex containers
+alwaysApply: true
+---
+
+# codex-www write scope
+
+You are in the **Project Codex product/www** silo.
+
+## Allowed writes
+
+- Paths under this silo root (`codex-www/`)
+- **Carve-out (P1):** TrueNAS app **`projectcodex` only** — hub paths needed to maintain it:
+  - `/mnt/DataStore/home/agent/compose-live/projectcodex*`
+  - `/mnt/DataStore/home/agent/docs/apps/projectcodex.md`
+  - `/mnt/DataStore/home/agent/secrets/projectcodex.env` (values never in git/chat)
+  - Related hub registry rows (`ports-in-use.md`, `apps/README.md`, `compose_live.py` APP_REGISTRY) when changing this app
+  - Run via Work seat or multi-root that includes hub; use `compose-live.sh` propose → apply
+
+**NAS is lab only** — production is cloud ([`docs/stack.md`](../../docs/stack.md)). See [`docs/runbooks/containers.md`](../../docs/runbooks/containers.md).
+
+## Forbidden
+
+- Strategy vault under `codex-business/` (open that silo instead)
+- Homelab fleet compose / prune / MAM / Plex / Media (anything **other than** `projectcodex`)
+- Opening all of `/mnt/DataStore` as the workspace
+- Shipping a public website without an explicit product Build plan
+
+Write-scope v1 is **rules-only** (plus this named carve-out).

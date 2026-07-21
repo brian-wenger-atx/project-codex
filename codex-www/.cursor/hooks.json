@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeReadFile": [
+      {
+        "command": ".cursor/hooks/www-feed-lanes-sync.sh",
+        "matcher": "Read|TabRead"
+      }
+    ],
+    "preToolUse": [
+      {
+        "command": ".cursor/hooks/www-feed-lanes-sync.sh",
+        "matcher": "Read"
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": ".cursor/hooks/www-feed-lanes-sync.sh",
+        "matcher": "www-feed\\.md"
+      }
+    ]
+  }
+}
