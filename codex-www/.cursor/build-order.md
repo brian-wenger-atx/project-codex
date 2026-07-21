@@ -16,7 +16,7 @@ No hub-work-queue Python clone.
 
 | Plan | Lane | Path | Status |
 |------|------|------|--------|
-| www-foundation-stack | foundation | `/mnt/DataStore/home/agent/.cursor/plans/www_foundation_stack_71f9027b.plan.md` | **P0–P2 shipped 2026-07-20** → **next: P3** (flesh multi-service / Postgres / migrations) |
+| www-foundation-stack | foundation | `/mnt/DataStore/home/agent/.cursor/plans/www_foundation_stack_71f9027b.plan.md` | **P0–P3 shipped 2026-07-20** → **next: P4** (foundation shell placeholder) |
 
 Lab: `http://192.168.1.200:4003/` (Next) · stack [`docs/stack.md`](../docs/stack.md) · containers [`docs/runbooks/containers.md`](../docs/runbooks/containers.md)
 
@@ -24,7 +24,7 @@ Lab: `http://192.168.1.200:4003/` (Next) · stack [`docs/stack.md`](../docs/stac
 
 ## Queued
 
-_(P3–P4+ stay inside foundation plan until P3 fleshed; SP1–SP6 are separate product plans)_
+_(P4+ stay inside foundation plan until P3 Built; SP1–SP6 are separate product plans)_
 
 ## Shipped
 
@@ -34,7 +34,7 @@ _(P3–P4+ stay inside foundation plan until P3 fleshed; SP1–SP6 are separate 
 | 2 | dual-feed-www | foundation | `.cursor/plans/2026-07-20-dual-feed-www.plan.md` | shipped 2026-07-20 |
 | — | www-foundation-stack **P0** | foundation | `/mnt/DataStore/home/agent/.cursor/plans/www_foundation_stack_71f9027b.plan.md` | P0 2026-07-20 |
 | — | www-foundation-stack **P1** | foundation | same | P1 2026-07-20 |
-| — | www-foundation-stack **P2** | foundation | same | P2 2026-07-20 (Next+Redis+worker) |
+| — | www-foundation-stack **P3** | foundation | same | P3 2026-07-20 (Postgres+PgBouncer+migrations+claims) |
 
 ## Habit
 

@@ -83,7 +83,7 @@ Sources: job posts, founder/CTO statements, detector sites, case studies. Live H
 |-------|-----|
 | P1 | NAS lab container access + `projectcodex` placeholder on `:4003` |
 | P2 | Next.js scaffold + BullMQ SSOT stubs + Stripe raw-body stub + DB singleton |
-| P3 | Multi-service portable compose (web/worker/postgres/pgbouncer/redis) |
+| P3 | Multi-service portable compose (web/worker/postgres/pgbouncer/redis) — **shipped 2026-07-20** |
 | Later | Cloud cutover plan (vendor, DNS, CI/CD) |
 
 ## Ask business session
