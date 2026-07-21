@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --bg0: #1a2332;
+  --bg1: #0f1419;
+  --fg: #e8eef7;
+  --muted: rgba(232, 238, 247, 0.75);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  color: var(--fg);
+  background: linear-gradient(160deg, var(--bg0) 0%, var(--bg1) 55%, #243044 100%);
+  font-family: Georgia, "Times New Roman", serif;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+
+a {
+  color: inherit;
+}

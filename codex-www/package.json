@@ -1,0 +1,12 @@
+{
+  "name": "codex-www",
+  "private": true,
+  "packageManager": "pnpm@10.12.4",
+  "scripts": {
+    "dev": "pnpm --filter @project-codex/web dev",
+    "build": "pnpm --filter @project-codex/web build",
+    "start": "pnpm --filter @project-codex/web start",
+    "gen:queue": "pnpm --filter @project-codex/queue-contracts gen",
+    "lint": "pnpm --filter @project-codex/web lint"
+  }
+}

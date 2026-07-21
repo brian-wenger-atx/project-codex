@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+set -e
+cd "$(dirname "$0")/.."
+if ! command -v pnpm >/dev/null 2>&1; then
+  echo "husky: pnpm not on PATH — skip gen:queue (use Docker Node: pnpm --dir codex-www gen:queue)"
+  exit 0
+fi
+pnpm --dir codex-www gen:queue
+git diff --exit-code -- codex-www/worker/src/generated/jobs.py

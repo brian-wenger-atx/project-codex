@@ -9,8 +9,8 @@ Update same turn when Brian adds prefs or priority.
 | # | Item | Why | Status |
 |---|------|-----|--------|
 | 1 | **Mobile-first web (required)** — iPhone + iPad responsive layout from day 1 | Companion is consumed on phone/tablet; must not ship desktop-only. Viewport, fluid layout, Safari safe-areas, touch targets. Bake into **P2 scaffold** and every UI Build after. | **required · next** — not optional polish |
-| 2 | Foundation **P2** — Next.js scaffold + hard-rule stubs | Unlocks real app behind `:4003` | **Fleshed — ready to Build** |
-| 3 | Foundation **P3** — portable multi-service compose | Postgres/PgBouncer/Redis/worker | After P2 |
+| 2 | Foundation **P2** — Next.js scaffold + hard-rule stubs | Unlocks real app behind `:4003` | **shipped 2026-07-20** |
+| 3 | Foundation **P3** — portable multi-service compose | Postgres/PgBouncer/Redis/worker | **next** — flesh then Build |
 
 ## Deferred (www)
 

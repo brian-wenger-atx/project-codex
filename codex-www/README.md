@@ -2,14 +2,28 @@
 
 Product / website silo for **Project Codex**.
 
-**Status:** stack locked (P0); NAS lab **`projectcodex`** on `:4003` (P1). Next: P2 app scaffold.
+**Status:** P2 scaffold — Next.js lab on `:4003` (mobile-first). Stack: [`docs/stack.md`](docs/stack.md).
 
 | Path | Purpose |
 |------|---------|
-| [`app/`](app/) | App scaffold (P2+) |
-| [`lab/placeholder/`](lab/placeholder/) | Static HTML served by lab nginx |
-| [`docs/stack.md`](docs/stack.md) | Locked stack + competitor research + hard rules |
-| [`docs/git.md`](docs/git.md) | Monorepo remote → github.com/brian-wenger-atx/project-codex |
-| [`docs/runbooks/containers.md`](docs/runbooks/containers.md) | Maintain `projectcodex` on NAS lab |
-| [`docs/business-feed.md`](docs/business-feed.md) | Www → strategy outbound |
-| [`docs/stack-tbd.md`](docs/stack-tbd.md) | Pointer only (retired) |
+| [`app/`](app/) | Next.js App Router (`@project-codex/web`) |
+| [`worker/`](worker/) | Python BullMQ consumer stub |
+| [`packages/queue-contracts/`](packages/queue-contracts/) | TS job SSOT → Pydantic codegen |
+| [`docs/`](docs/) | Stack, feeds, runbooks |
+| [`lab/placeholder/`](lab/placeholder/) | Retired from `:4003` (kept as asset) |
+
+## Local dev
+
+```bash
+cd /mnt/DataStore/Ventures/project-codex/codex-www
+cp .env.example .env.local   # REDIS_URL=redis://127.0.0.1:6379
+pnpm install
+pnpm gen:queue
+pnpm dev                     # http://127.0.0.1:3000 — needs lab Redis on loopback
+```
+
+Lab URL: `http://192.168.1.200:4003/`
+
+## Git
+
+Monorepo: see [`../GIT.md`](../GIT.md) and [`docs/git.md`](docs/git.md).

@@ -1,0 +1,12 @@
+{
+  "name": "project-codex",
+  "private": true,
+  "packageManager": "pnpm@10.12.4",
+  "scripts": {
+    "prepare": "husky",
+    "gen:queue": "pnpm --dir codex-www gen:queue"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}
