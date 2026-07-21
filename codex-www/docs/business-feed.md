@@ -7,16 +7,15 @@ Business reads this path; does not write www. Schema SoT: `/mnt/DataStore/Ventur
 ## Meta
 
 - **Last updated:** 2026-07-20
-- **Updated because:** Mobile-first web required from day 1; native iOS/Android = other silo (Brian → business)
+- **Updated because:** Foundation plan P0–P4 **complete** — closed/cleaned; next = separate lane/SP plans
 
 ## Shipped
 
 | When | What | Why it matters (user/commercial) | Plan / lane |
 |------|------|----------------------------------|---------------|
 | 2026-07-20 | **Foundation baseline — stack lock (P0)** | Production target locked for scale: **Next.js (App Router) + TypeScript + PostgreSQL + Redis + BullMQ (Node+Python) + Stripe + Python AI workers**. Cloud = final home; NAS = lab only. Five scaffolding hard rules (queue SSOT, Stripe raw body, DB singleton + PgBouncer, explicit SQL migrations, idempotent Gemini job claims). Competitor-informed (Blinkist/Shortform/Headway/Speechify/Snipd/…). | [www-foundation-stack](/mnt/DataStore/home/agent/.cursor/plans/www_foundation_stack_71f9027b.plan.md) P0 · lane `foundation` · [`docs/stack.md`](stack.md) |
-| 2026-07-20 | **Foundation baseline — NAS lab containers (P1)** | Agent can create/update TrueNAS app **`projectcodex`** on LAN `:4003` (placeholder web). Prove maintain path before cloud cutover; no public hostname yet. | same plan P1 · [`runbooks/containers.md`](runbooks/containers.md) · hub `docs/apps/projectcodex.md` |
-
-**Not yet shipped (same plan):** P2 Next.js scaffold · P3 multi-service compose (worker/postgres/pgbouncer/redis) · P4+ product shell / SP1–SP6.
+| 2026-07-20 | **Foundation baseline — NAS lab containers (P1)** | Agent can create/update TrueNAS app **`projectcodex`** on LAN `:4003`. Prove maintain path before cloud cutover; no public hostname yet. | same plan P1 · [`runbooks/containers.md`](runbooks/containers.md) · hub `docs/apps/projectcodex.md` |
+| 2026-07-20 | **Foundation complete — P2–P4** | Lab live: Next scaffold + Redis/BullMQ (P2), Postgres+PgBouncer+job claims (P3), Monarch-quiet shell — dark sidebar landscape ≥1024 / hamburger elsewhere (P4). Foundation plan **closed**; product lanes/SPs = separate www plans. Brian may hire designer before public polish. | same plan P2–P4 · lab `http://192.168.1.200:4003/` |
 
 ## Stumbles
 
@@ -36,6 +35,7 @@ Business reads this path; does not write www. Schema SoT: `/mnt/DataStore/Ventur
 
 | When | Question for business | Blocks what | Urgency |
 |------|----------------------|-------------|---------|
+| 2026-07-20 | Echo foundation **complete** (P0–P4) onto `www-feed.md` / strategy pin | Cross-silo awareness; Ready stays empty until product proposals graduate | Soon — next business session |
 | 2026-07-20 | Echo foundation baseline (stack + lab) onto `www-feed.md` so strategy pin/dashboard harvest is explicit | Cross-silo awareness only (www already locked) | Soon — next business session |
 | 2026-07-20 | Confirm **“books for life”** = unlock survives cancel vs while-subscribed | SP2 pricing UX / entitlements schema | Before billing Build |
 | 2026-07-20 | Trial length / what trial includes | SP1 trial→sub flow | Before billing Build |

@@ -4,32 +4,42 @@ Agent-maintained deferred / upcoming product work. **Not** strategy idea-gen —
 
 Update same turn when Brian adds prefs or priority.
 
+## Standing requirements
+
+| Item | Notes |
+|------|-------|
+| **Mobile-first web** — iPhone + iPad from day 1 | Required on every UI Build. Native iOS/Android = other silo. |
+
 ## Next (priority)
 
 | # | Item | Why | Status |
 |---|------|-----|--------|
-| 1 | **Mobile-first web (required)** — iPhone + iPad responsive layout from day 1 | Companion is consumed on phone/tablet; must not ship desktop-only. Viewport, fluid layout, Safari safe-areas, touch targets. Bake into **P2 scaffold** and every UI Build after. | **required · next** — not optional polish |
-| 2 | Foundation **P2** — Next.js scaffold + hard-rule stubs | Unlocks real app behind `:4003` | **shipped 2026-07-20** |
-| 3 | Foundation **P3** — portable multi-service compose | Postgres+PgBouncer, SQL migrations, job_id claim | **shipped 2026-07-20** |
-| 4 | Foundation **P4** — app shell (last phase of foundation plan) | Dark sidebar landscape ≥1024; hamburger phone/portrait; Home/Health/Queue | **shipped 2026-07-20** |
-| 5 | Lane stubs + product SPs | security / user-control / ai-module / feed proposals | **separate plans** — not foundation P5–P7 |
+| 1 | Lane stubs + product SPs | security / user-control / ai-module / feed proposals | **separate plans** when Ready / Brian asks |
+
+## Shipped (foundation)
+
+| Item | Status |
+|------|--------|
+| Foundation P0–P4 (`www-foundation-stack`) | **complete 2026-07-20** — stack, NAS lab, scaffold, data plane, shell |
 
 ## Deferred (www)
 
 | Item | Notes |
 |------|-------|
-| Security / user-control / AI-module stubs | Separate www plans after foundation P4 |
+| Security / user-control / AI-module stubs | Separate www plans |
 | SP1–SP6 product surfaces | Separate plans when Ready / Brian asks |
 | Cloud cutover | Separate plan; NAS lab only until then |
+| Hire designer for go-live polish | Brian may hire before public launch — not a www plan yet |
 
 ## Out of this silo (do not plan here)
 
 | Item | Where |
 |------|-------|
-| **Native iOS + Android apps** | Future **other silo** (app development). Brian noted to business 2026-07-20. Www stays **responsive web** first; native is not a www lane until that silo exists and feeds Ready. |
+| **Native iOS + Android apps** | Future **other silo**. Www stays responsive web first. |
 
 ## Changelog
 
-- 2026-07-20 — P4 chrome: Monarch-style sidebar landscape/desktop; hamburger portrait + iPhone (no black sidebar in portrait)
+- 2026-07-20 — Foundation closed (P0–P4); backlog cleaned for next lane/SP plans
+- 2026-07-20 — P4 chrome: dark sidebar landscape ≥1024; hamburger portrait + iPhone
 - 2026-07-20 — Foundation plan ends at P4; lanes/SPs = separate plans
-- 2026-07-20 — Mobile-first required + next; native apps = other silo (business already noted)
+- 2026-07-20 — Mobile-first required; native apps = other silo

@@ -14,17 +14,15 @@ No hub-work-queue Python clone.
 
 ## Active / next (this silo)
 
-| Plan | Lane | Path | Status |
-|------|------|------|--------|
-| www-foundation-stack | foundation | `/mnt/DataStore/home/agent/.cursor/plans/www_foundation_stack_71f9027b.plan.md` | **P0–P4 shipped 2026-07-20** — foundation plan **complete**; lanes/SPs = separate plans |
+_(none — foundation closed 2026-07-20)_
 
-Lab: `http://192.168.1.200:4003/` (Next) · stack [`docs/stack.md`](../docs/stack.md) · containers [`docs/runbooks/containers.md`](../docs/runbooks/containers.md)
+Lab: `http://192.168.1.200:4003/` · stack [`docs/stack.md`](../docs/stack.md) · containers [`docs/runbooks/containers.md`](../docs/runbooks/containers.md)
 
-**Next requirement (backlog):** [mobile-first web — iPhone/iPad required from day 1](backlog.md) — baked into P2 scaffold; native iOS/Android = other silo (not www).
+**Standing:** mobile-first web (iPhone/iPad) on every UI Build. **Next plans:** security / user-control / ai-module / product SPs when Ready or Brian asks (separate plans).
 
 ## Queued
 
-_(After P4 ships, foundation plan is done; security / user-control / AI / SP1–SP6 = separate plans)_
+_(empty)_
 
 ## Shipped
 
@@ -32,9 +30,7 @@ _(After P4 ships, foundation plan is done; security / user-control / AI / SP1–
 |------:|------|------|------|--------|
 | 1 | www-queue-lanes | foundation | `.cursor/plans/2026-07-20-www-queue-lanes.plan.md` | shipped 2026-07-20 |
 | 2 | dual-feed-www | foundation | `.cursor/plans/2026-07-20-dual-feed-www.plan.md` | shipped 2026-07-20 |
-| — | www-foundation-stack **P0** | foundation | `/mnt/DataStore/home/agent/.cursor/plans/www_foundation_stack_71f9027b.plan.md` | P0 2026-07-20 |
-| — | www-foundation-stack **P1** | foundation | same | P1 2026-07-20 |
-| — | www-foundation-stack **P4** | foundation | same | P4 2026-07-20 (shell) — **plan complete** |
+| 3 | www-foundation-stack | foundation | `/mnt/DataStore/home/agent/.cursor/plans/www_foundation_stack_71f9027b.plan.md` | **complete** P0–P4 2026-07-20 |
 
 ## Habit
 
@@ -43,4 +39,4 @@ _(After P4 ships, foundation plan is done; security / user-control / AI / SP1–
 - Feed → Pending: hook auto-runs `scripts/www-lanes-sync.py` on www-feed Read/shell; manual `python3 scripts/www-lanes-sync.py` / `--check` on resume
 - Lane adopt/drop → update adopted table in `lanes.md` same turn (Pending is generated); note business to mark feed `adopted in www` (www-only does not edit the feed)
 - Reverse feed: same-turn write `docs/business-feed.md` on filter-matching ship / stumble / learning / ask-back; refresh pins if affected
-- **Sent to business (2026-07-20):** foundation **baseline** (P0 stack + P1 lab) written to [`docs/business-feed.md`](../docs/business-feed.md) — harvest on next business session; www-only cannot edit `www-feed.md`
+- **Sent to business (2026-07-20):** foundation **complete** (P0–P4) → [`docs/business-feed.md`](../docs/business-feed.md) — harvest on next business session
