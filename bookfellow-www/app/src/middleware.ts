@@ -2,21 +2,12 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 /**
- * Cookie-presence gate for redirects only (Better Auth guidance).
- * Full session + disabled_at checks happen in layouts/API via getSessionUser.
+ * Do not bounce /sign-in or /create-account based on cookie presence alone.
+ * Stale/invalid session cookies (common after lab resets) would redirect Home
+ * while getSessionUser still shows signed-out — Sign in appears to do nothing.
+ * Session validity is enforced in Node via getSessionUser / requireAdmin.
  */
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-  const isAuthPage =
-    pathname === "/sign-in" || pathname === "/create-account";
-  const sessionCookie =
-    request.cookies.get("better-auth.session_token") ||
-    request.cookies.get("__Secure-better-auth.session_token");
-
-  if (isAuthPage && sessionCookie) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
-
+export function middleware(_request: NextRequest) {
   return NextResponse.next();
 }
 
