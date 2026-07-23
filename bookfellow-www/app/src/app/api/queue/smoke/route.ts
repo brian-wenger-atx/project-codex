@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/auth";
 import {
   enqueuePackBuild,
   enqueuePackBuildSmoke,
@@ -8,11 +9,19 @@ import {
 export const runtime = "nodejs";
 
 /**
- * Lab-only queue smoke.
+ * Lab-only queue smoke — admin session required.
  * ?mode=double — enqueue same jobId twice (post-complete skip proof)
  * ?mode=staleClaim — seed stale claimed row then enqueue (reclaim proof)
  */
 export async function POST(req: Request) {
+  const gate = await requireAdmin(req.headers);
+  if (!gate.ok) {
+    return NextResponse.json(
+      { ok: false, error: gate.status === 401 ? "Unauthorized" : "Forbidden" },
+      { status: gate.status },
+    );
+  }
+
   try {
     const url = new URL(req.url);
     const mode = url.searchParams.get("mode") || "once";

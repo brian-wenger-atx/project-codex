@@ -15,3 +15,4 @@ When scaffolding or touching billing, queues, DB, or AI workers:
 4. Schema: explicit SQL migrations (indexes, composite keys, entitlements). ORM is not schema authority.
 5. AI workers: claim/lock `job_id` in Postgres before any Gemini call so Redis retries are idempotent.
 6. **Mobile-first required** (iPhone + iPad) from day 1 — viewport, fluid layout, Safari safe-areas, touch targets. Native apps are a later silo, not this one.
+7. **Live-bound product code** — NAS is lab **host** only; app/auth/admin/security must be production-shaped and portable to cloud. No throwaway product paths “because lab.” Staged UI polish OK when a later plan owns it.

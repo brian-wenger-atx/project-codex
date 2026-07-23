@@ -1,28 +1,28 @@
 ---
-description: Write-scope for codex-www silo — product/www + projectcodex containers
+description: Write-scope for bookfellow-www silo — product/www + bookfellow containers
 alwaysApply: true
 ---
 
-# codex-www write scope
+# bookfellow-www write scope
 
-You are in the **Project Codex product/www** silo.
+You are in the **Bookfellow product/www** silo (`bookfellow-www/`).
 
 ## Allowed writes
 
-- Paths under this silo root (`codex-www/`)
-- **Carve-out (P1):** TrueNAS app **`projectcodex` only** — hub paths needed to maintain it:
-  - `/mnt/DataStore/home/agent/compose-live/projectcodex*`
-  - `/mnt/DataStore/home/agent/docs/apps/projectcodex.md`
-  - `/mnt/DataStore/home/agent/secrets/projectcodex.env` (values never in git/chat)
+- Paths under this silo root (`bookfellow-www/`)
+- **Carve-out:** TrueNAS app **`bookfellow` only** — hub paths needed to maintain it:
+  - `/mnt/DataStore/home/agent/compose-live/bookfellow*`
+  - `/mnt/DataStore/home/agent/docs/apps/bookfellow.md`
+  - `/mnt/DataStore/home/agent/secrets/bookfellow.env` (values never in git/chat)
   - Related hub registry rows (`ports-in-use.md`, `apps/README.md`, `compose_live.py` APP_REGISTRY) when changing this app
   - Run via Work seat or multi-root that includes hub; use `compose-live.sh` propose → apply
 
-**NAS is lab only** — production is cloud ([`docs/stack.md`](../../docs/stack.md)). See [`docs/runbooks/containers.md`](../../docs/runbooks/containers.md).
+**NAS is lab host only** — production is cloud ([`docs/stack.md`](../../docs/stack.md)). **Product code is live-bound** (production-shaped, portable) — see stack hard rule 7 / backlog standing req. See [`docs/runbooks/containers.md`](../../docs/runbooks/containers.md).
 
 ## Forbidden
 
-- Strategy vault under `codex-business/` (open that silo instead)
-- Homelab fleet compose / prune / MAM / Plex / Media (anything **other than** `projectcodex`)
+- Strategy vault under `bookfellow-business/` (open that silo instead)
+- Homelab fleet compose / prune / MAM / Plex / Media (anything **other than** `bookfellow`)
 - Opening all of `/mnt/DataStore` as the workspace
 - Shipping a public website without an explicit product Build plan
 

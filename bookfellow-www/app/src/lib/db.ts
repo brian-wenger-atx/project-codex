@@ -1,5 +1,6 @@
 /**
  * Hard rule 3: global Postgres client singleton via PgBouncer (DATABASE_URL).
+ * Better Auth and app queries share one pg.Pool — no second pool.
  */
 import { Pool, type QueryResult, type QueryResultRow } from "pg";
 
@@ -11,29 +12,40 @@ export type DbClient = {
   ) => Promise<QueryResult<T>>;
 };
 
-const globalForDb = globalThis as unknown as { __projectCodexDb?: DbClient };
+const globalForDb = globalThis as unknown as {
+  __bookfellowPool?: Pool;
+  __bookfellowDb?: DbClient;
+};
 
-function createPoolClient(): DbClient {
+function createPool(): Pool {
   const url = process.env.DATABASE_URL;
   if (!url) {
     throw new Error("DATABASE_URL is required (PgBouncer URL)");
   }
   // Transaction-mode PgBouncer: keep queries simple (unnamed); max modest.
-  const pool = new Pool({
+  return new Pool({
     connectionString: url,
     max: 10,
   });
-  return {
-    kind: "pg",
-    query: (sql, params) => pool.query(sql, params),
-  };
+}
+
+/** Shared Pool for Better Auth (`database: getPool()`) and getDb(). */
+export function getPool(): Pool {
+  if (!globalForDb.__bookfellowPool) {
+    globalForDb.__bookfellowPool = createPool();
+  }
+  return globalForDb.__bookfellowPool;
 }
 
 export function getDb(): DbClient {
-  if (!globalForDb.__projectCodexDb) {
-    globalForDb.__projectCodexDb = createPoolClient();
+  if (!globalForDb.__bookfellowDb) {
+    const pool = getPool();
+    globalForDb.__bookfellowDb = {
+      kind: "pg",
+      query: (sql, params) => pool.query(sql, params),
+    };
   }
-  return globalForDb.__projectCodexDb;
+  return globalForDb.__bookfellowDb;
 }
 
 export async function pingDb(): Promise<boolean> {

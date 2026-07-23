@@ -2,7 +2,9 @@
 
 **Status:** locked in P0 of [www foundation plan](/mnt/DataStore/home/agent/.cursor/plans/www_foundation_stack_71f9027b.plan.md).
 
-**Final home:** production-grade **cloud** (vendor TBD). **NAS** (`projectcodex` on TrueNAS) is **lab only** (rename cutover to `bookfellow` later) — same service graph, portable compose.
+**Final home:** production-grade **cloud** (vendor TBD). **NAS** (`bookfellow` on TrueNAS) is **lab host only** — same service graph, portable compose.
+
+**Live-bound product code (Brian 2026-07-22):** Host ≠ quality bar. App, auth, admin, and security work on the NAS lab must be **production-shaped** and ready to port — no throwaway product paths “because it’s just lab.” Staged UI polish is OK when a later plan explicitly owns the polish pass.
 
 ## Recommendation
 
@@ -16,8 +18,8 @@
 | Payments | **Stripe** (Checkout + Portal; App Router webhook = `req.text()` + idempotent events) |
 | Data access | **Explicit SQL migrations**; Next DB client **singleton**; **PgBouncer** in compose |
 | AI / pack generation | **Python workers** + **job_id claim in Postgres before Gemini**; artifacts to object storage |
-| Auth | Defer library to security lane; session/JWT compatible with Next |
-| Interim host | Docker Compose on NAS (`projectcodex`, lab only, LAN `:4003`) |
+| Auth | **Better Auth** (email/password + DB sessions) — M1; OAuth later |
+| Interim host | Docker Compose on NAS (`bookfellow`, lab host only, LAN `:4003`) |
 | Final host | Managed cloud — separate cutover plan |
 
 ### Rejected
@@ -46,6 +48,7 @@ Also mirrored in [`.cursor/rules/stack-hard-rules.mdc`](../.cursor/rules/stack-h
 | 4 | Weak tutorial schemas | **Explicit SQL migrations** (indexes, composite keys, entitlements). ORM optional as thin query layer — not schema authority. |
 | 5 | Double Gemini on Redis retry | Before Gemini: **claim/lock `job_id` in Postgres**. Retries no-op if claimed; no overwrite of finished artifacts without explicit re-run job type. |
 | 6 | Desktop-only UI | **Mobile-first required** (iPhone + iPad) from day 1 — viewport, fluid layout, Safari safe-areas, touch targets. See [`.cursor/backlog.md`](../.cursor/backlog.md). Native iOS/Android = **other silo** later. |
+| 7 | Lab-host excuse for weak product | **Live-bound product code** — NAS is lab **host** only; app/auth/admin/security must be production-shaped and portable to cloud. No throwaway product paths “because lab.” |
 
 ## Competitor landscape (research 2026-07-20)
 
@@ -81,14 +84,14 @@ Sources: job posts, founder/CTO statements, detector sites, case studies. Live H
 
 | Phase | Job |
 |-------|-----|
-| P1 | NAS lab container access + `projectcodex` placeholder on `:4003` |
+| P1 | NAS lab container access + `bookfellow` on `:4003` |
 | P2 | Next.js scaffold + BullMQ SSOT stubs + Stripe raw-body stub + DB singleton |
 | P3 | Multi-service portable compose (web/worker/postgres/pgbouncer/redis) — **shipped 2026-07-20** |
 | Later | Cloud cutover plan (vendor, DNS, CI/CD) |
 
 ## Ask business session
 
-Www locked stack 2026-07-20 (this file). Please echo a one-liner on `codex-business/docs/www-feed.md` Direction / Meta when convenient — www did not edit the business vault.
+Www locked stack 2026-07-20 (this file). Please echo a one-liner on `bookfellow-business/docs/www-feed.md` Direction / Meta when convenient — www did not edit the business vault.
 
 ## Changelog
 

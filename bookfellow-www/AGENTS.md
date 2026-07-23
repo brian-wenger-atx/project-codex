@@ -7,7 +7,7 @@
 This folder only (`bookfellow-www/`), plus the **`bookfellow`** container carve-out:
 
 - Hub compose/docs/secrets for slug `bookfellow` only — see [`.cursor/rules/bookfellow-www-scope.mdc`](.cursor/rules/bookfellow-www-scope.mdc) and [`docs/runbooks/containers.md`](docs/runbooks/containers.md)
-- **NAS ≠ production** (cloud is final home)
+- **NAS ≠ production host** (cloud is final home). **Product code is live-bound** — write production-shaped app/auth/admin/security that ports; do not invent throwaway product paths “because lab.” See standing req in [`.cursor/backlog.md`](.cursor/backlog.md) + [`docs/stack.md`](docs/stack.md).
 - **Placeholder:** after Builds that change [`sites/placeholder/`](sites/placeholder/), **Wrangler Pages deploy same turn** (Brian standing 2026-07-21) — see [`sites/placeholder/README.md`](sites/placeholder/README.md)
 
 ## Must not
@@ -29,7 +29,7 @@ This folder only (`bookfellow-www/`), plus the **`bookfellow`** container carve-
 - [`.cursor/lanes.md`](.cursor/lanes.md) — adopted lanes + www-curated inferred sequence (update same-turn)
 - [`.cursor/backlog.md`](.cursor/backlog.md) — www deferred / next requirements (update same-turn when Brian adds)
 
-**Feed → lanes:** Read `www-feed.md` Lane proposals before planning; consolidate into `lanes.md` (**Adopted** / **Inferred sequence** / **Later / park**). Do not mirror feed rows into a Pending table (`scripts/www-lanes-sync.py` is a retired no-op).
+**Feed → pins:** Auto-ingest `www-feed.md` on Meta bumps / product sessions (see `.cursor/rules/www-pins.mdc`). Bucket into `lanes.md` + `backlog.md`. **Www owns module sequence** in `build-order.md` Active/next — Ready ≠ Build order. Do not mirror feed rows into a Pending table.
 
 When adopting a lane proposed in the strategy feed → note for a business session to mark feed status `adopted in www` (do not edit business from www-only).
 
@@ -42,8 +42,8 @@ When adopting a lane proposed in the strategy feed → note for a business sessi
 
 ## Resume
 
-1. `/mnt/DataStore/Ventures/bookfellow/bookfellow-business/docs/www-feed.md` — before product planning (Ready = shortcut). Also scan `.cursor/backlog.md` + `.cursor/lanes.md` + remnant registry paths; **promote-into-plan** on fit (intake fold — max 5). Never invent Ready on the business feed.
-2. `.cursor/build-order.md` + `.cursor/lanes.md` + `.cursor/backlog.md`
+1. Auto-ingest `/mnt/DataStore/Ventures/bookfellow/bookfellow-business/docs/www-feed.md` (Meta first) — bucket requirements; never copy business Build order. Scan `.cursor/backlog.md` + `.cursor/lanes.md` + remnants; **promote-into-plan** on fit (intake fold — max 5). Never invent Ready on the business feed.
+2. `.cursor/build-order.md` **Active / next** (www module SoT) + `.cursor/lanes.md` + `.cursor/backlog.md`
 3. [`docs/business-feed.md`](docs/business-feed.md) — ensure outbound rows are current after feed-worthy work
 4. `docs/stack.md` (locked) when scaffolding — hard rules in `.cursor/rules/stack-hard-rules.mdc`
 5. `docs/git.md` — monorepo remote https://github.com/brian-wenger-atx/bookfellow

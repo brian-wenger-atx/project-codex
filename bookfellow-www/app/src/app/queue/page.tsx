@@ -47,7 +47,7 @@ export default function QueuePage() {
         role="status"
       >
         <strong className="font-medium">Lab warning:</strong> These actions hit live Redis/Postgres
-        on the NAS lab without auth. Do not expose this path on a public hostname.
+        on the NAS lab. Admin session required — do not expose this path on a public hostname.
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
