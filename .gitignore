@@ -30,3 +30,6 @@
 
 # Cursor hook debug captures
 **/.cursor/hooks/.*-last-input.json
+
+# Retired monorepo git (local backup only)
+.git-monorepo-archive/
