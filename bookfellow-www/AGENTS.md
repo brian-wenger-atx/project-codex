@@ -7,6 +7,7 @@
 This folder only (`bookfellow-www/`), plus the **`bookfellow`** container carve-out:
 
 - Hub compose/docs/secrets for slug `bookfellow` only — see [`.cursor/rules/bookfellow-www-scope.mdc`](.cursor/rules/bookfellow-www-scope.mdc) and [`docs/runbooks/containers.md`](docs/runbooks/containers.md)
+- **Lab secrets (find here):** gitignored symlink [`.env.lab`](.env.lab) → hub `secrets/bookfellow.env`. If missing: `ln -sfn /mnt/DataStore/home/agent/secrets/bookfellow.env .env.lab`
 - **NAS ≠ production host** (cloud is final home). **Product code is live-bound** — write production-shaped app/auth/admin/security that ports; do not invent throwaway product paths “because lab.” See standing req in [`.cursor/backlog.md`](.cursor/backlog.md) + [`docs/stack.md`](docs/stack.md).
 - **Placeholder:** after Builds that change [`sites/placeholder/`](sites/placeholder/), **Wrangler Pages deploy same turn** (Brian standing 2026-07-21) — see [`sites/placeholder/README.md`](sites/placeholder/README.md)
 

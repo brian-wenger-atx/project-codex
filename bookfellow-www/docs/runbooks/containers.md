@@ -18,7 +18,7 @@
 | App code | `bookfellow-www/` (this silo) | Ventures www |
 | Compose staging | `/mnt/DataStore/home/agent/compose-live/bookfellow.yaml` | Www Builds via multi-root **or** Work seat |
 | Hub app doc | `/mnt/DataStore/home/agent/docs/apps/bookfellow.md` | Same |
-| Secrets | `/mnt/DataStore/home/agent/secrets/bookfellow.env` | Never commit values |
+| Secrets | Hub SoT: `/mnt/DataStore/home/agent/secrets/bookfellow.env` · **Www view:** [`../../.env.lab`](../../.env.lab) (symlink) | Never commit values |
 
 **Carve-out:** only TrueNAS app slug **`bookfellow`**. Fleet prune / MAM / other compose stays Work-only.
 

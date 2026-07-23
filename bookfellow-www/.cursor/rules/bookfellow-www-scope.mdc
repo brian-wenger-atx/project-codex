@@ -13,7 +13,7 @@ You are in the **Bookfellow product/www** silo (`bookfellow-www/`).
 - **Carve-out:** TrueNAS app **`bookfellow` only** — hub paths needed to maintain it:
   - `/mnt/DataStore/home/agent/compose-live/bookfellow*`
   - `/mnt/DataStore/home/agent/docs/apps/bookfellow.md`
-  - `/mnt/DataStore/home/agent/secrets/bookfellow.env` (values never in git/chat)
+  - `/mnt/DataStore/home/agent/secrets/bookfellow.env` (values never in git/chat). Www findability: gitignored symlink `bookfellow-www/.env.lab` → that file.
   - Related hub registry rows (`ports-in-use.md`, `apps/README.md`, `compose_live.py` APP_REGISTRY) when changing this app
   - Run via Work seat or multi-root that includes hub; use `compose-live.sh` propose → apply
 
