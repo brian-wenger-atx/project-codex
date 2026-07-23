@@ -1,12 +1,12 @@
 # Bookfellow
 
-Greenfield commercial product — **not** Docking Bay Codex. Formerly temporary working title **Project Codex**.
+Greenfield commercial product — **not** Docking Bay Codex.
 
-| Silo | Path | Job |
-|------|------|-----|
-| **Business** | [`bookfellow-business/`](bookfellow-business/) | Strategy, direction, digests, decisions |
-| **WWW** | [`bookfellow-www/`](bookfellow-www/) | Product / website |
+| Silo | Path | GitHub |
+|------|------|--------|
+| **Business** | [`bookfellow-business/`](bookfellow-business/) | [bookfellow-business](https://github.com/brian-wenger-atx/bookfellow-business) |
+| **WWW** | [`bookfellow-www/`](bookfellow-www/) | [bookfellow-www](https://github.com/brian-wenger-atx/bookfellow-www) |
 
-**Git:** https://github.com/brian-wenger-atx/bookfellow — monorepo root = this folder. See [`GIT.md`](GIT.md).
+Parent folder is a non-git bucket. See [`GIT.md`](GIT.md). Open silos via multi-root workspace (or `/mnt/DataStore/Ventures` first).
 
-Open **`/mnt/DataStore/Ventures`** root first; open a silo when scoping.
+Archived monorepo remote: https://github.com/brian-wenger-atx/bookfellow
