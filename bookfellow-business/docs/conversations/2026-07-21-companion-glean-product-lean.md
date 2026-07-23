@@ -7,7 +7,7 @@ Archive index for this business chat. Durable handoff lives on **www-feed P1–P
 - **Bookfellow** @ **bookfellow.io** + **bookfellow.cc** owned; pass **.com** (~$3895); ignore **.app** (Melbourne competitor)
 - **.io trust:** slightly weaker than .com for mainstream/40+; fine for Reddit beta; App Store wrappers mitigate later
 - GTM: friends **alpha** → **Reddit beta**
-- Rename plan: [.cursor/plans/2026-07-21-bookfellow-rename.plan.md](../../.cursor/plans/2026-07-21-bookfellow-rename.plan.md) — **Build in other agent**
+- Rename plan: [.cursor/plans/2026-07-21-bookfellow-rename-cutover.plan.md](../../.cursor/plans/archive/2026-07-21-bookfellow-rename-cutover.plan.md) — **Build in other agent**
 - Canon: [naming/bookfellow-lean-2026-07-21.md](../naming/bookfellow-lean-2026-07-21.md)
 
 ## Core surfaces (Brian)

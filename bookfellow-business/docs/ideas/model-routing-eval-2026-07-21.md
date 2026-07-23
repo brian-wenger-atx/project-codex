@@ -6,7 +6,7 @@
 
 **Prompt discipline (Brian):** agent-drafted image prompts without Brian review contributed to bad outputs (incl. **duplicated text** on images). **Hard-lock reviewed prompts** before production image jobs; version prompts in repo; no silent prompt drift.
 
-**Status:** Strategy charter only until Brian asks for a **www bake-off plan** (fixtures + rubrics + scored runs). **2026-07-21:** Brian — leave as strategy; lots to build; www is where he wants it minus the **name** (pivot back to naming / rename).
+**Status:** Strategy charter only. **2026-07-22:** Full decision checklist **backlogged** — [ai-llm-decision-backlog-2026-07-22.md](ai-llm-decision-backlog-2026-07-22.md). Reopen after foundation framing; no www bake-off plan yet. **2026-07-21:** leave as strategy; www good enough minus name (rename shipped).
 
 ## Principle
 

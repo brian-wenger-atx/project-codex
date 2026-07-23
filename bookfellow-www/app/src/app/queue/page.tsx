@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LabBadge } from "@/components/shell/LabBadge";
+import Link from "next/link";
 
 type SmokeResult = { ok?: boolean; [key: string]: unknown };
 
@@ -31,14 +31,19 @@ export default function QueuePage() {
   return (
     <div className="flex flex-col gap-6">
       <header>
-        <div className="flex flex-wrap items-center gap-2">
-          <h1 className="m-0 font-[family-name:var(--font-display)] text-2xl font-normal sm:text-3xl">
-            Queue smoke
-          </h1>
-          <LabBadge />
-        </div>
+        <h1 className="m-0 font-[family-name:var(--font-display)] text-2xl font-normal sm:text-3xl">
+          Queue diagnostics
+        </h1>
         <p className="mt-2 text-[color:var(--ink-muted)]">
-          Lab-only tools. Enqueues BullMQ jobs and can seed stale claims — not a product surface.
+          Run queue checks and reclaim tests. Admin access required.
+        </p>
+        <p className="mt-2">
+          <Link
+            href="/admin"
+            className="text-sm text-[color:var(--ink-muted)] underline-offset-2 hover:underline"
+          >
+            Admin
+          </Link>
         </p>
       </header>
 
@@ -46,8 +51,8 @@ export default function QueuePage() {
         className="rounded-xl border border-amber-700/30 bg-amber-50 px-4 py-3 text-sm text-amber-950"
         role="status"
       >
-        <strong className="font-medium">Lab warning:</strong> These actions hit live Redis/Postgres
-        on the NAS lab. Admin session required — do not expose this path on a public hostname.
+        <strong className="font-medium">Caution:</strong> These actions use the live job queue and
+        database. Use only when diagnosing queue behavior.
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">

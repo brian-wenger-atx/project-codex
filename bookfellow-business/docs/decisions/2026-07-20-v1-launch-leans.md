@@ -27,4 +27,4 @@ Status: **lean** (pricing math unproven; revisit when unit economics exist). Sou
 
 ## Product proposals → www
 
-Flesh-out and Builds happen in `codex-www`. Business projects them via [www-feed.md](../www-feed.md) **Product proposals** (agents pass without waiting for Brian to re-type).
+Flesh-out and Builds happen in `bookfellow-www`. Business projects them via [www-feed.md](../www-feed.md) **Product proposals** (agents pass without waiting for Brian to re-type).

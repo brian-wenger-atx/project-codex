@@ -86,3 +86,4 @@ Start with **1 + 4** for pilot publishers; defer hard retailer integrations.
 1. Confirm **A (companion free)** vs **B (book hosted free)** vs both later?  
 2. Does free-with-purchase **replace** à la carte for that ISBN, or stack with a premium tier?  
 3. Who funds generation on free unlocks — Bookfellow, publisher fee, or rev-share?
+4. **Billable event** ~~open~~ **Locked 2026-07-22:** code entered → auto-assign book (enter = unlock = one event). Still open: unit? Who invoices whom? → [publisher-plan](publisher-plan-2026-07-22.md)

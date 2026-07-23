@@ -157,7 +157,7 @@ Web: **https://bookfellow.io**
 ## Www apply notes
 
 - **Publish on site:** title, **Effective date** + **Last updated** lines, sections **1–15** only. Nothing below this divider.
-- **Target:** `codex-www/sites/placeholder/privacy.html` — replace `<article class="prose">` body; keep ink+amber chrome.
+- **Target:** `bookfellow-www/sites/placeholder/privacy.html` — replace `<article class="prose">` body; keep ink+amber chrome.
 - **Dates on page:** **Effective date** **May 14, 2026** (stable — do not bump unless counsel resets origin). **Last updated** **July 21, 2026** — **bump this line on every material policy edit** so visitors see maintenance.
 - **Do not** add vendor names, stack details, roadmap, geo-blocks, region names, or unavailable-page mechanics to the public page.
 - **§11:** US company · US customers · US processing — plain, no geo detail.

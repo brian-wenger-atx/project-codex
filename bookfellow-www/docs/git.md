@@ -1,13 +1,18 @@
-# Git (codex-www)
-
-Product code in this silo is versioned as part of the **Bookfellow monorepo**.
+# Git (bookfellow-www)
 
 | | |
 |--|--|
-| **Remote** | https://github.com/brian-wenger-atx/bookfellow |
-| **Local monorepo root** | `/mnt/DataStore/Ventures/project-codex` (renames to `…/bookfellow` in Phase D) |
-| **This silo path in repo** | `codex-www/` (renames to `bookfellow-www/` in Phase D) |
+| **Remote** | https://github.com/brian-wenger-atx/bookfellow-www |
+| **Local root** | `/mnt/DataStore/Ventures/bookfellow/bookfellow-www` |
+| **Default branch** | `main` |
 
-Canonical notes: [`../../GIT.md`](../../GIT.md) (monorepo root).
+Sibling strategy vault: [`bookfellow-business`](https://github.com/brian-wenger-atx/bookfellow-business) (separate remote). Parent `/Ventures/bookfellow` is a non-git folder.
 
-Do not create a separate www GitHub remote unless Brian splits repos.
+Archived monorepo (history only): https://github.com/brian-wenger-atx/bookfellow
+
+```bash
+cd /mnt/DataStore/Ventures/bookfellow/bookfellow-www
+git status -sb
+```
+
+Never commit secrets (`.env.lab` is gitignored).

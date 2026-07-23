@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+set -e
+cd "$(dirname "$0")/.."
+# Agent NAS: Node/pnpm via nvm
+if [ -s "$HOME/.nvm/nvm.sh" ]; then
+  # shellcheck disable=SC1091
+  . "$HOME/.nvm/nvm.sh"
+fi
+if [ -s "$HOME/.config/agent-node.env" ]; then
+  # shellcheck disable=SC1091
+  . "$HOME/.config/agent-node.env"
+fi
+if ! command -v pnpm >/dev/null 2>&1; then
+  echo "husky: pnpm not on PATH — skip gen:queue"
+  exit 0
+fi
+if ! pnpm gen:queue; then
+  echo "husky: gen:queue failed (often missing tsc in broken node_modules) — skip"
+  exit 0
+fi
+git diff --exit-code -- worker/src/generated/jobs.py

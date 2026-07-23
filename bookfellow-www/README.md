@@ -19,7 +19,7 @@ Product / website silo for **Bookfellow**.
 Node **22** + **pnpm** via **nvm**. Source: `. "$HOME/.nvm/nvm.sh"` or `. "$HOME/.config/agent-node.env"`.
 
 ```bash
-cd /mnt/DataStore/Ventures/project-codex/codex-www
+cd /mnt/DataStore/Ventures/bookfellow/bookfellow-www
 cp .env.example .env.local
 # Set DATABASE_URL → 127.0.0.1:6432 (pgbouncer)
 # Set DATABASE_DIRECT_URL → 127.0.0.1:5433 (postgres migrate)

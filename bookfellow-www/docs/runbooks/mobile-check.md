@@ -16,7 +16,7 @@ Hard rule 6 / backlog: mobile-first from day 1. P4 chrome is **orientation-sensi
 
 1. Open lab: `http://192.168.1.200:4003/`
 2. DevTools → responsive mode → set width **and** orientation
-3. Confirm: brand + Lab badge; nav Home / Health / Queue; drawer Escape closes on phone; no horizontal scroll
+3. Confirm: brand + Lab badge; nav Home / Sign in / Create account; drawer Escape closes on phone; no horizontal scroll
 
 ## P4 checked
 

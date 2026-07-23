@@ -29,14 +29,14 @@ Www judgment **2026-07-22** (Brian resequence) — shell → home → **bootstra
 
 | Status | Module | Scope (smoke this, then stop) | Feed inputs (not order) |
 |--------|--------|-------------------------------|-------------------------|
-| **ACTIVE** | **M1 — Account** | Auth (Better Auth) · lab lockdown (admin queue + durable headers + auth-secret fail-fast + Redis requirepass; CSP→M12) · P38 prefs + companion_credits · auth UX + redeem wire · `/admin` foundation · invite email gate · docs. **Smoke:** invite→create→session/prefs; queue admin-only; admin credits/disable. | Ready auth/P38 · P9 · Brian admin/invites |
-| queued | **M2 — App chrome** | Rail (Bf · Settings · Collapse · hover-expand) · Appearance (Slate+Harbor default) · Settings shell · phone hamburger + crumbs pattern. **Smoke:** empty signed-in shell phone+desktop; theme persists. | P37 · P28 · P34 chrome |
+| **set** | **M1 — Account** | Auth (Better Auth) · lab lockdown · P38 prefs + companion_credits · auth UX + redeem wire · `/admin` · **5b credit security** · invite email · **auth harden** (12 + HIBP + DB rate limits; cookie/lifetime docs) · docs + Redis ready. **Smoke (2026-07-23):** ready db+redis; rate limit 429; password/HIBP gates; invite path + admin/queue gates from Plans 1–6. | Ready auth/P38 · P9 · Brian admin/invites · PII/security 2026-07-23 |
+| **ACTIVE** | **M2 — App chrome** | Rail (Bf · Settings · Collapse · hover-expand) · Appearance (Slate+Harbor default) · Settings shell · phone hamburger + crumbs pattern. **Smoke:** empty signed-in shell phone+desktop; theme persists. | P37 · P28 · P34 chrome |
 | queued | **M3 — Library** | Signed-in home · covers↔table · S/M/L · sort/custom · Recent/Pin · Add-a-book shell · eligibility decline+waitlist · signed-in covers (P41 API; placeholders OK until API wired). **Smoke:** empty + seeded shelf; decline path; covers look right. | P17 · P22 · P41 |
 | queued | **M4 — Bootstrap** | Book room (Overview + companion frame · Recap structure · marks · day-1 motion subset) **plus** Codex-bootstrap AI folder/packs split (P42/P44 thin) · whitelist pregen enough to host curated titles · thin build theater OK. **Not** full AI/LLM. **Smoke:** open curated title → Recap/marks with bootstrap pack. | P29 · P35 · P30 · P42 · P44 · P6 subset · P32 thin |
-| queued | **M5 — Friends alpha** | Invite-gated cut · alpha feedback button (P43) · curated whitelist polish. **Opens the tandem band** for M6–M10. **Smoke:** invite friend opens curated title end-to-end on bootstrap. | P43 · P44 product cut |
+| queued | **M5 — Friends alpha** | **Plan 1 (first slice):** **Sign in on placeholder** (bookfellow.io) for alpha + beta — small **header/corner** control; label “Sign in” only; href → **live app host `/sign-in` once public-ready** (not lab `:4003`); waitlist stays; create stays invite-gated. Then: invite-gated cut · phase banners · P43 + diagnostics · verbose logging required · session replay · account-delete escape · curated whitelist polish. **Opens M6–M10 tandem.** **Smoke (slice 1):** corner Sign in → live app `/sign-in`; **module smoke:** invite friend opens curated title E2E on bootstrap; feedback+events works. | P43 · P44 product cut · Brian alpha/beta program · placeholder entry 2026-07-23 |
 | tandem (w/ M5) | **M6 — Real AI / LLM** | Real AI workers · pack pipeline beyond bootstrap · toward P20 (not kitchen-sink in one pass). Includes **audio recap (P15)** when Brian pulls it. **Smoke:** real gen path for a title; audio control UX when in scope. | P20 trajectory · P6 · P3/P4 · P15 |
 | tandem (w/ M5) | **M7 — Notes** | Notes tab + chapter notes; same objects. **Smoke:** create/edit/survive reload. | P11 |
-| tandem (w/ M5) | **M8 — Chat + spoiler contract** | FAB on book surfaces · fiction hard-block future · NF later-OK. **Smoke:** grounded answers; refuse spoiler; CTA to mark further. | P10 · P14 |
+| tandem (w/ M5) | **M8 — Chat + spoiler contract** | FAB on book surfaces · fiction hard-block future · NF later-OK. **Build during alpha; release** per business Beta-2 / possible GA-without-chat. Honor **AI-off** toggle. **Smoke:** grounded answers; refuse spoiler; CTA to mark further; AI-off hides chat. | P10 · P14 |
 | tandem (w/ M5) | **M9 — Cast** | Fiction roster + character notes + history-to-mark. **Smoke:** one title. | P18 |
 | tandem (w/ M5) | **M10 — Quizzes** | Cumulative + chapter · run length 5/10/15 · history. **Smoke:** one attempt path. | P19 |
 | queued | **M11 — Unlock UX** | Credits language · redeem/QR paths (no Stripe SKUs). **Smoke:** unlock a title without payment. | P2 · P9 |
@@ -51,7 +51,7 @@ Www judgment **2026-07-22** (Brian resequence) — shell → home → **bootstra
 - Public marketing after a smokeable product loop; placeholder already covers brand share.
 - Full model-routing checklist (P20) stays backlogged beyond first M6 slices.
 
-**Open plan files:** [M1 Account umbrella](plans/2026-07-22-m1-account-umbrella.plan.md) — **7-plan chain**. Plans 1–2 **shipped** 2026-07-22. Next Build: Plan 3 account SoT.
+**Open plan files:** [M1 Account umbrella](plans/2026-07-22-m1-account-umbrella.plan.md) — chain **1–7 shipped** (incl. 5b). **M1 set.** Next module: **M2 — App chrome**.
 
 ---
 
@@ -59,14 +59,8 @@ Www judgment **2026-07-22** (Brian resequence) — shell → home → **bootstra
 
 | Order | Plan | Path | Depends |
 |------:|------|------|---------|
-| — | **M1 umbrella** | [`.cursor/plans/2026-07-22-m1-account-umbrella.plan.md`](plans/2026-07-22-m1-account-umbrella.plan.md) | — |
-| 1 | Foundation — identity & sessions | […-1-foundation](plans/2026-07-22-m1-account-1-foundation.plan.md) | umbrella |
-| 2 | Lab lockdown | […-2-lab-lockdown](plans/2026-07-22-m1-account-2-lab-lockdown.plan.md) | Plan 1 |
-| 3 | Account SoT (P38) | […-3-account-sot](plans/2026-07-22-m1-account-3-account-sot.plan.md) | Plan 2 |
-| 4 | Auth UX + redeem wire | […-4-auth-ux-redeem](plans/2026-07-22-m1-account-4-auth-ux-redeem.plan.md) | Plan 3 |
-| 5 | Admin foundation V1 | […-5-admin-foundation](plans/2026-07-22-m1-account-5-admin-foundation.plan.md) | Plan 4 |
-| 6 | Invites + email | […-6-invites-email](plans/2026-07-22-m1-account-6-invites-email.plan.md) | Plan 5 |
-| 7 | Docs + cleanup | […-7-docs-cleanup](plans/2026-07-22-m1-account-7-docs-cleanup.plan.md) | Plan 6 |
+| — | **M1 umbrella** (shipped) | [`.cursor/plans/2026-07-22-m1-account-umbrella.plan.md`](plans/2026-07-22-m1-account-umbrella.plan.md) | — |
+| 1–7 | M1 children (all shipped) | Plans 1–5 · 5b · 6 · 7 under `.cursor/plans/` | umbrella |
 
 ## Shipped
 
@@ -79,6 +73,7 @@ Www judgment **2026-07-22** (Brian resequence) — shell → home → **bootstra
 | 5 | privacy-page-professional | placeholder-site | `.cursor/plans/archive/2026-07-21-privacy-page-professional.plan.md` | **shipped** 2026-07-21 — P25 |
 | 6 | terms-page-professional | placeholder-site | `.cursor/plans/archive/2026-07-21-terms-page-professional.plan.md` | **shipped** 2026-07-21 — P27 |
 | 7 | placeholder-copy-pass | placeholder-site | `/mnt/DataStore/home/agent/.cursor/plans/placeholder_copy_pass_e5ce80b3.plan.md` | **shipped** 2026-07-21 |
+| 8 | placeholder-timeline | placeholder-site | `sites/placeholder/timeline.html` | **shipped** 2026-07-23 — https://bookfellow.io/timeline.html |
 
 ## Habit
 

@@ -1,6 +1,8 @@
 ---
 name: dual-feed-www
 overview: Www half of bidirectional strategy↔product feeds — docs/business-feed.md + write/pin habits; Order 1→2 with business sibling (shipped 2026-07-20).
+status: closed
+shipped: 2026-07-20
 todos:
   - id: create-business-feed
     content: Create docs/business-feed.md with Meta | Shipped | Stumbles | Learnings | Asks-back | Changelog (empty tables + seed Changelog)
@@ -27,8 +29,8 @@ isProject: true
 | | |
 |--|--|
 | **Order** | **1. dual-feed-business** → **2. this plan** (aligned 2026-07-20) |
-| **This plan** | [`codex-www/.cursor/plans/2026-07-20-dual-feed-www.plan.md`](.cursor/plans/2026-07-20-dual-feed-www.plan.md) |
-| **Sibling (business)** | [`codex-business/.cursor/plans/2026-07-20-dual-feed-business.plan.md`](/mnt/DataStore/Ventures/project-codex/codex-business/.cursor/plans/2026-07-20-dual-feed-business.plan.md) |
+| **This plan** | [`bookfellow-www/.cursor/plans/archive/2026-07-20-dual-feed-www.plan.md`](2026-07-20-dual-feed-www.plan.md) |
+| **Sibling (business)** | [`codex-business/.cursor/plans/2026-07-20-dual-feed-business.plan.md`](/mnt/DataStore/Ventures/bookfellow/bookfellow-business/.cursor/plans/2026-07-20-dual-feed-business.plan.md) |
 | **This plan owns** | `docs/business-feed.md`, www AGENTS/rule write habit, www pin refresh on outbound signals, Product-proposals / Ready adoption habit from `www-feed.md` |
 | **This plan must not** | Edit `codex-business/`, invent strategy canon, or Build product features P1–P6 |
 | **Unlocks** | Business can harvest www signals; product plans can ask-back via a durable feed |
@@ -65,7 +67,7 @@ flowchart LR
 ## Locked decisions (2026-07-20 full review)
 
 1. **Www owns** [`docs/business-feed.md`](docs/business-feed.md) — business **reads only**.
-2. **Business owns** `/mnt/DataStore/Ventures/project-codex/codex-business/docs/www-feed.md` — www **reads only**.
+2. **Business owns** `/mnt/DataStore/Ventures/bookfellow/bookfellow-business/docs/www-feed.md` — www **reads only**.
 3. **Brian does not maintain feeds** — www updates `business-feed.md` **same turn** on ship / stumble / learning / ask-back; refreshes `.cursor/build-order.md` and `.cursor/lanes.md` when those signals affect pins.
 4. **No hub-work-queue clone** — markdown + agent habits only.
 5. **Content filter (reverse feed):** user/commercial-meaningful **Shipped**; **Stumbles** that hit cost / rights / timeline / feasibility; **Learnings** that change money or positioning; **Asks-back** to business. Skip routine eng noise (refactors, lint, local DX).

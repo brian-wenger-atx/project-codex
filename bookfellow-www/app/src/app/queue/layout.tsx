@@ -19,7 +19,7 @@ export default async function QueueLayout({
           Forbidden
         </h1>
         <p className="m-0 text-[color:var(--ink-muted)]">
-          Queue smoke tools are admin-only.
+          Queue diagnostics are available to admins only.
         </p>
         <Link
           href="/"

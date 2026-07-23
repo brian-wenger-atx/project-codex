@@ -1,6 +1,8 @@
 ---
-name: bookfellow-rename
+name: bookfellow-rename-2026-07-21
 overview: "Rename Project Codex → Bookfellow everywhere Brian opens: filesystem folders, GitHub repo, NAS lab app, package/queue identities, and live docs/rules — without touching homelab Docking Bay Codex."
+status: built
+catalog: exclude
 todos:
   - id: lock-decisions
     content: "Brian locks folder layout, GitHub, NAS timing, npm scope, lab Postgres wipe vs migrate"
@@ -16,20 +18,22 @@ todos:
     status: completed
   - id: phase-d-filesystem
     content: "Phase D — mv folders; fix package.json + .husky/pre-commit; repair symlinks; Ventures + cursor-shared"
-    status: pending
+    status: completed
   - id: phase-e-path-sweep
     content: "Phase E — Absolute path sweep in bookfellow tree + hub venture pointers (Work seat half)"
-    status: pending
+    status: completed
   - id: phase-f-nas
     content: "Phase F — Stop projectcodex first (free :4003); then bookfellow migrate; secrets/registry; volume per decision"
-    status: pending
+    status: completed
   - id: phase-g-verify
     content: "Phase G — Smoke :4003 + /api/queue/smoke; dual-feed; pnpm gen; Cursor roots; git remote"
-    status: pending
+    status: completed
 isProject: true
 ---
 
 # Bookfellow rename (Project Codex → Bookfellow)
+
+**Archived 2026-07-21** — Built A–G. Living path: `.cursor/plans/archive/2026-07-21-bookfellow-rename-cutover.plan.md`.
 
 ## Plain English
 
@@ -90,7 +94,7 @@ flowchart TD
 
 | Current | Recommended target |
 |---------|-------------------|
-| `/mnt/DataStore/Ventures/project-codex/` | `/mnt/DataStore/Ventures/bookfellow/` |
+| `/mnt/DataStore/Ventures/bookfellow/` | `/mnt/DataStore/Ventures/bookfellow/` |
 | `codex-business/` | **`bookfellow-business/`** *(locked)* |
 | `codex-www/` | **`bookfellow-www/`** *(locked)* |
 | GitHub `brian-wenger-atx/project-codex` | `brian-wenger-atx/bookfellow` |
@@ -121,7 +125,7 @@ Prefixed silo names so future ventures (`edgebook`, etc.) can sit alongside with
 
 ## Inventory (2026-07-21 — thorough, not exhaustive line dump)
 
-### A. Git / monorepo root (`/mnt/DataStore/Ventures/project-codex`)
+### A. Git / monorepo root (`/mnt/DataStore/Ventures/bookfellow`)
 
 | Item | Notes |
 |------|-------|
@@ -242,80 +246,51 @@ All five locked 2026-07-21 (see table at bottom). Do not start D until Cursor cl
 
 **Done when:** `git remote -v` shows `bookfellow`; push/pull works. ✅
 
-### Phase D — Filesystem move (Ventures root, Cursor closed)
+### Phase D — Filesystem move ✅ (2026-07-21)
 
-**Critical:** Close Cursor windows whose root is `project-codex` or either silo. Agents will break mid-chat otherwise.
+1. Host `mv` `…/project-codex` → `…/bookfellow` (repo root cannot `git mv` itself); then `git mv` silos → `bookfellow-business` / `bookfellow-www`.
+2. Fixed monorepo `package.json` (`--dir bookfellow-www`) + `.husky/pre-commit` (soft-skip if gen:queue/tsc broken).
+3. Symlinks `shared` / `skills` still resolve (same relative depth).
+4. Updated `/mnt/DataStore/Ventures/AGENTS.md`, `cursor-shared/README.md`, living Brian-fact bullets + changelog, business scope/AGENTS/README, www `docs/git.md`.
+5. Agent workspace root moved to `/mnt/DataStore/Ventures/bookfellow`.
 
-1. From the monorepo root, prefer **`git mv`** so rename history stays legible:
-   ```bash
-   git mv /mnt/DataStore/Ventures/project-codex /mnt/DataStore/Ventures/bookfellow
-   # then rename silos per locked decision, e.g.:
-   git mv /mnt/DataStore/Ventures/bookfellow/codex-business /mnt/DataStore/Ventures/bookfellow/bookfellow-business
-   git mv /mnt/DataStore/Ventures/bookfellow/codex-www /mnt/DataStore/Ventures/bookfellow/bookfellow-www
-   ```
-   If `git mv` cannot be used cleanly from the active shell/worktree, fall back to host `mv`, but expect a noisier rename diff.
-2. Fix monorepo `package.json` scripts (`--dir bookfellow-www` etc.).
-3. Fix root **`.husky/pre-commit`** (`pnpm --dir codex-www gen:queue` → `--dir bookfellow-www`; diff path `bookfellow-www/worker/...`).
-4. Verify silo `.cursor/rules/shared` + `.cursor/skills` symlinks still resolve. Depth should stay the same, so they should survive; if not, relink them manually in the moved silos. `ventures-cursor-shared-ensure.sh` only repairs Ventures root `cursor-shared` hub-fact links, not these per-silo `.cursor` links.
-5. Update `/mnt/DataStore/Ventures/AGENTS.md` silo map + resume section.
-6. Update `cursor-shared/README.md` + Brian-fact bullets in `cursor-shared/AGENTS.md` (via Ventures root or symlink write).
-7. Reopen Cursor on `/mnt/DataStore/Ventures` only after **E1** has cleaned the live venture feed/rule paths enough that agents will not boot against dead `project-codex` absolutes; then reopen the new silos.
+**Done when:** New paths open; symlinks resolve; husky points at `bookfellow-www`. ✅  
+**Next:** Phase E absolute path sweep (then F NAS).
 
-**Done when:** New paths open; symlinks resolve; husky points at `www`; git status clean enough to continue.
+### Phase E — Absolute path sweep ✅ (2026-07-21)
 
-### Phase E — Absolute path sweep (venture + hub)
+**E1 — Venture:** Absolute `…/project-codex/…` → `…/bookfellow/…`; live feeds/pins/rules/AGENTS/runbooks/scripts use `bookfellow-business` / `bookfellow-www`. Scope rule renamed `bookfellow-www-scope.mdc`. Left intentional: rename-plan inventory, GIT “Formerly”, built-plan historical prose, `projectcodex` NAS slug until F, “Project Codex” = retired title.
 
-After D, grep and fix **absolute** strings in two seats:
+**E2 — Hub:** Updated `docs/products/codex.md` venture pointer, `docs/ventures/README.md`, `docs/apps/projectcodex.md` + apps README, email-setup vault path, living hub plans’ absolute venture paths. Did **not** rewrite changelog history or archived plan filenames.
 
-**E1 — Venture tree (business + www):**
+**Done when:** Venture absolute paths clean except history/formerly; hub no longer sends agents to `…/project-codex/`. ✅  
+**Next:** Phase F NAS `projectcodex` → `bookfellow` (Work seat).
 
-- Dual-feed contract + both feeds
-- Dashboard pins / build-order sibling links
-- Scope rules (`www-feed.mdc`, www pins)
-- Plan files that still point at old absolutes (living pins; built plans: patch sibling links or banner “paths moved”)
+### Phase F — NAS lab app rename ✅ (2026-07-21)
 
-```bash
-grep -RIn 'project-codex\|codex-business\|codex-www\|projectcodex\|Project Codex' \
-  /mnt/DataStore/Ventures/bookfellow --exclude-dir=node_modules --exclude-dir=.git
-```
+1. Documented compose/secrets; wipe → fresh `bookfellow_pgdata` (locked #5).
+2. Built `bookfellow-web:p4` + `bookfellow-worker:p3`; queue/health already `bookfellow-jobs` / `bookfellow-web` (B2).
+3. Deleted TrueNAS app `projectcodex` (`force_remove_custom_app`).
+4. Created Custom App `bookfellow` on `:4003`; secrets `bookfellow.env`; registry in `compose_live.py`.
+5. Migrated schema; smoke ready + queue double/staleClaim OK.
+6. Retired `compose-live/projectcodex*` + `secrets/projectcodex.env`; hub `docs/apps/bookfellow.md`; www carve-out → `bookfellow`.
 
-**E2 — Hub pointers (Work seat — required even if F deferred):**
+**Done when:** Only `bookfellow` on `:4003`; hub docs match; old slug gone from registry. ✅  
+**Next:** Phase G verify checklist (mostly already green from F smoke).
 
-- `docs/products/codex.md` — update **venture path pointer** to `…/Ventures/bookfellow/…` only (Docking Bay product name stays Codex)
-- `docs/ventures/*` guides that hardcode `project-codex` / `codex-www`
-- Hub AGENTS / ventures index links if present
-- Hub living plans under `home/agent/.cursor/plans/` that hardcode venture paths
-- Do **not** rewrite historical changelog / completed-builds prose
+### Phase G — Verify ✅ (2026-07-21)
 
-**Done when:** Venture grep is clean except history/formerly/Docking Bay; hub no longer sends agents to `…/project-codex/`.
-
-### Phase F — NAS lab app rename (Work / hub seat)
-
-TrueNAS Custom Apps often **do not rename cleanly** — treat as **migrate**. **Port conflict:** `projectcodex` and `bookfellow` cannot both bind `:4003` / loopback Redis/Pg — **never start the new app while the old one is still up**.
-
-1. Document current compose + secrets keys; lock volume decision (#5).
-2. Build/tag `bookfellow-web` / `bookfellow-worker` images and finish **B2** queue/health rename in the same cutover window.
-3. **Stop and remove** live **`projectcodex`** app (frees `:4003` + loopbacks). Lab downtime expected (minutes).
-4. Add `compose-live/bookfellow.yaml` (+ meta) modeled on `projectcodex.yaml` with new image/container names; register `bookfellow` in `compose_live.py`; ports stay `:4003`.
-5. Copy secrets → `secrets/bookfellow.env` (same values; never commit); retire or archive `projectcodex.env` after cutover.
-6. Volume per decision: wipe → new `bookfellow_pgdata`; migrate → attach/rename `projectcodex_pgdata` explicitly (do not silently drop).
-7. `app.create` / propose+apply **bookfellow**; smoke `:4003` + queue proofs (Phase G).
-8. Delete or archive old `compose-live/projectcodex.yaml` (+ meta); update `docs/apps/README.md`, `docs/apps/bookfellow.md`, and `docs/server/ports-in-use.md`.
-9. Www carve-out: only maintain slug **`bookfellow`**; update containers runbook paths to `…/bookfellow/bookfellow-www/…` and any network references like `ix-projectcodex_default` → `ix-bookfellow_default`.
-
-**Done when:** Only `bookfellow` app on `:4003`; hub docs match; old slug gone from registry.
-
-### Phase G — Verify
-
-| Check | Expect |
+| Check | Result |
 |-------|--------|
-| Lab `http://192.168.1.200:4003/` | Bookfellow chrome; health ok |
-| Queue smoke | `/api/queue/smoke` (double-dispatch + stale reclaim per www containers runbook) |
-| `pnpm gen:queue` | Matches live queue name (`bookfellow-jobs` if F done) |
-| Dual-feed | Business can read www `business-feed.md` at new absolute path |
-| Cursor | Open `Ventures` + `bookfellow/bookfellow-business` + `bookfellow/bookfellow-www` without stale roots |
-| Git | Remote `bookfellow`; push works |
-| Homelab | Docking Bay `/codex` untouched; `docs/products/codex.md` path pointer updated |
+| Lab `:4003` | HTTP 200; UI says **Bookfellow**; `bookfellow-web` health + ready `db:ok` |
+| Queue smoke | double + staleClaim OK |
+| Queue SSOT | `bookfellow-jobs` in TS + generated Python; `pnpm gen:queue` wrote jobs.py (`tsc` still missing in lab `node_modules` — known soft-fail) |
+| Dual-feed | `business-feed.md` / `www-feed.md` / contract readable at new absolutes |
+| Tree / Cursor | `…/Ventures/bookfellow/{bookfellow-business,bookfellow-www}`; old `project-codex` gone; shared symlinks OK |
+| Git | `origin` → `brian-wenger-atx/bookfellow` (`ls-remote` OK) |
+| Homelab | `docs/products/codex.md` still **Codex** product; venture pointer → Bookfellow / `bookfellow` |
+
+**Rename plan complete** — all phases A–G done.
 
 ---
 
@@ -385,7 +360,7 @@ TrueNAS Custom Apps often **do not rename cleanly** — treat as **migrate**. **
 
 | | |
 |--|--|
-| **This plan** | `codex-business/.cursor/plans/2026-07-21-bookfellow-rename.plan.md` (path moves with Phase D) |
+| **This plan** | `bookfellow-business/.cursor/plans/archive/2026-07-21-bookfellow-rename-cutover.plan.md` (path moves with Phase D) |
 | **Www follow-on** | After Build approval: www silo owns Phase B (+ E www half); optionally a thin www plan that points here |
 | **Hub follow-on** | Work seat owns Phase F — may register a hub plan stub if Brian wants compose tracked on hub build-order |
 

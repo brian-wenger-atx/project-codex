@@ -27,19 +27,22 @@ todos:
     status: completed
   - id: chain-3-account-sot
     content: Plan 3 shipped — account SoT / P38 (m1-account-3-account-sot)
-    status: pending
+    status: completed
   - id: chain-4-auth-ux
     content: Plan 4 shipped — auth UX + redeem wire (m1-account-4-auth-ux-redeem)
-    status: pending
+    status: completed
   - id: chain-5-admin
     content: Plan 5 shipped — admin foundation V1 (m1-account-5-admin-foundation)
-    status: pending
+    status: completed
+  - id: chain-5b-credit-security
+    content: Plan 5b shipped — credit security (m1-account-5b-credit-security)
+    status: completed
   - id: chain-6-invites
     content: Plan 6 shipped — invites + email (m1-account-6-invites-email)
-    status: pending
+    status: completed
   - id: chain-7-docs
     content: Plan 7 shipped — docs, cleanup, module smoke (m1-account-7-docs-cleanup)
-    status: pending
+    status: completed
 isProject: false
 ---
 
@@ -62,12 +65,12 @@ isProject: false
 |------|-------------|
 | R1 / auth + sessions | **Fold** — Plans 1 + 4 |
 | P38 account prefs SoT | **Fold** — Plan 3; per-book stub for M4+ |
-| P9 Create-account redeem field | **Fold** — Plan 4 wire; fulfillment M10 |
+| P9 Create-account redeem field | **Fold** — Plan 4 wire; fulfillment **M11** |
 | Lab queue smoke lockdown | **Fold** — Plan 2 |
 | Admin + manual credits | **Fold** — Plan 5 as **Admin foundation V1** |
 | Invite email gate | **Fold** — Plan 6 (Brian consult 2026-07-22) |
 | P33 public marketing | **Cite** — M12 |
-| Full unlock / QR | **Leave** — M10 |
+| R4 Unlock / QR | **Leave** — **M11** |
 | OAuth / moderator promote UI | **Leave** — later |
 
 ---
@@ -97,13 +100,21 @@ Module smoke (lab `:4003`) before Active → M2:
 | OAuth | Google / Apple **after** friends alpha | Brian |
 | Roles | **user** or **admin** only; no promote UI | Brian |
 | Admin bootstrap | `BOOKFELLOW_ADMIN_EMAILS` env allow-list on create | Brian |
-| Admin product | **`/admin` Admin foundation V1** — list/disable/credits now; layout/nav ready for later back-office growth | Consult 2026-07-22 |
-| Credits | **`companion_credits` INT** wallet only; admin adjust. **`entitlements`** = per-book unlocks → **M10** | Consult Q1=a |
+| Admin product | **`/admin` Admin foundation V1** — list/disable/credits; top subnav; `/queue` link until M2 | Consult 2026-07-22 |
+| Admin disable safety | Self-disable blocked; **peer-admin disable** needs `BOOKFELLOW_ADMIN_MASTER_SECRET` (NAS only) | Plan 5 · renamed 5b |
+| Credits | **`companion_credits` INT**; admin absolute set ≥ 0; Plan 5b anomaly/freeze/scan/trusted grant | Plan 5 · 5b |
 | Invites | **Required** to create account (Plan 6). Distinct from P9 **redeem** (book unlock wire). | Consult |
-| Invite email | **Cloudflare Email Sending** REST from Next; from `invites@bookfellow.io`. API token in `secrets/bookfellow.env`. **Brian enables CF Sending before Build Plan 6.** | Consult #2 Q3=a |
+| Invite email | **Cloudflare Email Sending** REST from Next; from `invites@bookfellow.io`. Secrets: `CLOUDFLARE_ACCOUNT_ID` + `CLOUDFLARE_EMAIL_API_TOKEN`. Fail closed if unset. | Consult #2 Q3=a · Plan 6 |
 | Invite link URL | **`BOOKFELLOW_APP_URL`** default lab `http://192.168.1.200:4003` for M1 smoke; email always includes **pasteable code**. Remote friends: LAN/VPN or later APP_URL change (Tunnel/public) — no extra plan. | Consult #2 Q1=a |
 | Invite vs admin allow-list | After Plan 6 gate: **every** create needs a valid invite. `BOOKFELLOW_ADMIN_EMAILS` only sets `role=admin` on create — **no invite bypass**. Create both admins before flipping the gate. | Consult #2 Q2=a |
-| Redeem | Optional field on Create account only; fulfillment M10 | P9 |
+| Invite email verify | **Invite-as-verified** on successful create (not BA requireEmailVerification for M1) | Plan 6 consult Q1=a |
+| Auth harden placement | Rate limits + password/breached → **Plan 7** | Plan 6 consult Q2=a |
+| Auth harden (Plan 7) | Min password **12** + HIBP; rateLimit **database** storage; Redis ready **fail-closed**; session docs = BA **7d/1d** defaults | Plan 7 consult Q1=b Q2–Q4=a |
+| Admin CF alerts | Send to **all** `BOOKFELLOW_ADMIN_EMAILS` | Plan 6 consult Q3=a |
+| Invite resend | Resend **unused** invite row; token **rotates** (hash-only) | Plan 6 consult Q4=a |
+| Redeem | Optional field on Create only; `pending_redeem_code` SQL + BA input; `/r/[code]` → Create prefill; fulfillment **M11**. Column is attribution seed for later publisher count/bill (rules → business). | P9 · Plan 4 consult |
+| Plan 4 display name | Keep auto email local-part — no name field in Plan 4 | Plan 4 consult Q3=a |
+| Plan 4 signed-in auth pages | Soft-redirect to `/` via `getSessionUser` (Node layout) | Plan 4 consult Q4=a |
 | Auth routes | `/sign-in` + `/create-account` | P33 |
 | Plan 1 gate UI | Minimal form OK; polish Plan 4 | Full review |
 | Signup before Plan 6 | Open create allowed through Plan 5 for lab smoke; **Plan 6 flips gate on** | Chain |
@@ -116,6 +127,10 @@ Module smoke (lab `:4003`) before Active → M2:
 | Admin route gate | Shared `requireAdmin()` in Node layouts/API — **not** Edge middleware. Plan 2 `/queue` + Plan 5 `/admin` same pattern. | Plan 2 CP1 / consult |
 | Auth secret | Plan 2 **fail-fast** if `BETTER_AUTH_SECRET` unset at runtime (build placeholder only for `next build`). | Brian fold 2026-07-22 |
 | Redis lab | Plan 2 **`REDIS_PASSWORD`** → compose `REDIS_URL` + requirepass; **AUTH healthcheck**; keep `127.0.0.1:6379` host publish. | Plan 2 consult revise |
+| Prefs PATCH | **Deep-merge** top-level domains (`appearance` / `library` / `reading` / `rail`); not whole-blob replace | Plan 3 consult Q1=a |
+| `user_book_state` stub | PK + `state jsonb` + `updated_at` (unused until M4+) | Plan 3 consult Q2=a |
+| Default prefs | Account-scoped defaults locked in Plan 3 (Slate+Harbor, Library/Reading/rail) | Plan 3 consult Q3=a |
+| Credits on session | **SQL column + app/API only** — not Better Auth `additionalFields` | Plan 3 consult Q4=a |
 
 ---
 
@@ -149,6 +164,35 @@ Module smoke (lab `:4003`) before Active → M2:
 | Smoke proof | Cookie-jar curl + browser (Q3=a) |
 | Live-bound code | Standing requirement — see Locked decisions |
 | Auth secret / Redis | Fail-fast secret + Redis requirepass folded into Plan 2 (Brian 2026-07-22) |
+
+### Plan 3 full review / consult (2026-07-22) — folded
+
+| Topic | Lock |
+|-------|------|
+| Prefs PATCH | Deep-merge domains (Q1=a) |
+| Per-book stub | jsonb + `updated_at` (Q2=a) |
+| Default keys | Locked now (Q3=a) |
+| Credits wiring | SQL/app only (Q4=a) |
+| Intake re-scan | No new remnant folds; redeem/UI/unlock stay other plans |
+
+### Plan 4 full review / consult (2026-07-22) — folded
+
+| Topic | Lock |
+|-------|------|
+| Persist redeem | SQL + BA `input: true` (Q1=a) |
+| `/r/[code]` | Redirect + Create prefill (Q2=a) |
+| Display name | Local-part only (Q3=a) |
+| Signed-in auth pages | Soft-redirect via session (Q4=a) |
+| Publisher attribution | Durable code enables count/bill later; invoice rules ask-back to business; unlock fulfill **M11** |
+
+### Plan 5 full review / consult (2026-07-22) — folded
+
+| Topic | Lock |
+|-------|------|
+| Disable safety | Self-block; peer-admin needs off-site master secret (Q1=a+) |
+| Admin entry | `/queue` link + URL (Q2=a) |
+| Credits | ≥0 absolute set + exploit/anomaly detection (Q3=a+) |
+| Chrome | Top subnav (Q4=a) |
 
 ---
 
@@ -185,7 +229,7 @@ flowchart LR
 | Rail / Appearance / Settings UI | M2 |
 | Library / eligibility / covers | M3 |
 | Per-book state | M4–M8 |
-| Redeem/QR fulfillment + spend credits | M10 |
+| Redeem/QR fulfillment + spend credits | **M11** |
 | Friends-alpha product polish | M11 (mechanism ships in Plan 6) |
 | Public marketing | M12 |
 | Stripe SKUs | M13 |

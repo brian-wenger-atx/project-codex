@@ -1,0 +1,26 @@
+---
+description: Bugbot git root for Bookfellow www — never hub by default
+alwaysApply: true
+---
+
+# Bugbot (this silo)
+
+Bookfellow www git root is **`/mnt/DataStore/Ventures/bookfellow/bookfellow-www`**. Not the parent `bookfellow/` folder, not hub.
+
+## Invoke
+
+```bash
+python3 /mnt/DataStore/home/agent/scripts/hub-bugbot-gate.py invoke \
+  --checkpoint CP1 \
+  --plan /mnt/DataStore/Ventures/bookfellow/bookfellow-www/.cursor/plans/<plan>.plan.md
+```
+
+Use `runs[].task` **verbatim**. Expect `Full Repository Path: /mnt/DataStore/Ventures/bookfellow/bookfellow-www`.
+
+CP2: `--changed` paths under this tree (absolute or relative to this silo).
+
+## Do not
+
+- Pass a hub CreatePlan twin under `/mnt/DataStore/home/agent/.cursor/plans/` — that keeps Bugbot on the hub
+- Use `Full Repository Path: /mnt/DataStore`, `/mnt/DataStore/home/agent`, or the parent `…/bookfellow` (parent is not a git repo)
+- Hand-roll Task params (still use gate `invoke`)

@@ -34,7 +34,7 @@ export default function HealthPage() {
           Health
         </h1>
         <p className="mt-2 text-[color:var(--ink-muted)]">
-          Liveness and ready checks against the lab APIs.
+          Service health checks.
         </p>
       </header>
       <button

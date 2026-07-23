@@ -52,6 +52,19 @@ Service names and env vars match cloud topology from `docs/stack.md`:
 
 **Auth secret:** `BETTER_AUTH_SECRET` required at runtime — app fails closed if unset or set to the build placeholder.
 
+**Peer-admin / master secret:** `BOOKFELLOW_ADMIN_MASTER_SECRET` in `secrets/bookfellow.env` only (renamed from `BOOKFELLOW_ADMIN_PEER_DISABLE_SECRET` in Plan 5b). Required for peer-admin disable and anomalous credit **increases**. Set/rotate by editing the secrets file on the NAS (or `.env.lab` symlink) — **never** via the website. If unset, peer-admin disable and large credit increases fail closed. Self-disable is always refused. Credit scan: `BOOKFELLOW_PRODUCT_PHASE=alpha` → every 240m; otherwise every 15m.
+
+**Cloudflare Email Sending (Plan 6):** `CLOUDFLARE_ACCOUNT_ID` + `CLOUDFLARE_EMAIL_API_TOKEN` in `secrets/bookfellow.env`. From address: `invites@bookfellow.io`. Enable domain first:
+
+```bash
+npx wrangler email sending enable bookfellow.io
+npx wrangler email sending dns get bookfellow.io
+```
+
+Mint/resend and admin anomaly alerts fail closed until both secrets are set. Compose injects them into `web`. Resend rotates the invite token on the same row (hash-only storage).
+
+**Account runbook (Plan 7):** [`account-auth-admin.md`](./account-auth-admin.md) — secrets list, session cookies/lifetimes, M1 module smoke, auth harden.
+
 ## Migrations
 
 ```bash
@@ -84,7 +97,7 @@ curl -sf -X POST 'http://192.168.1.200:4003/api/queue/smoke?mode=staleClaim' \
   -H "Cookie: better-auth.session_token=COOKIE"
 ```
 
-Or use the admin UI at `http://192.168.1.200:4003/queue`.
+Or use the admin UI at `http://192.168.1.200:4003/queue`. Product admin (`/admin` — users, disable, credits) is linked quietly from `/queue`.
 
 | Proof | How |
 |-------|-----|

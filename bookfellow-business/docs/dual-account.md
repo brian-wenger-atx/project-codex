@@ -29,7 +29,7 @@ Do **not** open all of `/mnt/DataStore` as Ventures — collapses write-scope.
 | Concern | Shared | Isolated |
 |---------|--------|----------|
 | Brian facts / protocol | `cursor-shared/` symlinks + pack | — |
-| Product brain | `codex-business/docs/` vault | — |
+| Product brain | `bookfellow-business/docs/` vault | — |
 | Chat history | Digests in vault | Per userdata Agents history |
 | Write trees | — | Ventures vs hub/www |
 | Secrets | Venture stubs under `secrets/` | Homelab secrets stay on Work |

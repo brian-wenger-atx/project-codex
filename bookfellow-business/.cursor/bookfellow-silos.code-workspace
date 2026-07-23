@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "/mnt/DataStore/Ventures/bookfellow/bookfellow-business",
+      "name": "bookfellow-business"
+    },
+    {
+      "path": "/mnt/DataStore/Ventures/bookfellow/bookfellow-www",
+      "name": "bookfellow-www"
+    }
+  ],
+  "settings": {}
+}

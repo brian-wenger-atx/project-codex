@@ -4,9 +4,11 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
-import { LabBadge } from "@/components/shell/LabBadge";
 
-export default function SignInPage() {
+const fieldClass =
+  "min-h-11 rounded-lg border border-[color:var(--ink-muted)]/30 bg-white px-3 text-base";
+
+export function SignInForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,13 +37,12 @@ export default function SignInPage() {
   return (
     <div className="flex flex-col gap-6">
       <header>
-        <div className="flex flex-wrap items-center gap-2">
-          <h1 className="m-0 font-[family-name:var(--font-display)] text-2xl font-normal sm:text-3xl">
-            Sign in
-          </h1>
-          <LabBadge />
-        </div>
-        <p className="mt-2 text-[color:var(--ink-muted)]">Email and password.</p>
+        <h1 className="m-0 font-[family-name:var(--font-display)] text-2xl font-normal sm:text-3xl">
+          Sign in
+        </h1>
+        <p className="mt-2 text-[color:var(--ink-muted)]">
+          Welcome back — email and password.
+        </p>
       </header>
 
       <form onSubmit={onSubmit} className="flex max-w-md flex-col gap-4">
@@ -53,7 +54,7 @@ export default function SignInPage() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="min-h-11 rounded-lg border border-[color:var(--ink-muted)]/30 bg-white px-3"
+            className={fieldClass}
           />
         </label>
         <label className="flex flex-col gap-1 text-sm">
@@ -64,7 +65,7 @@ export default function SignInPage() {
             autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="min-h-11 rounded-lg border border-[color:var(--ink-muted)]/30 bg-white px-3"
+            className={fieldClass}
           />
         </label>
         {error ? (

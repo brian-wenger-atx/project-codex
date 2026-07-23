@@ -12,6 +12,13 @@ export function getRedisConnection(): IORedis {
   return connection;
 }
 
+/** Readiness ping — PING must return PONG. Does not share the queue client's lazy fail path. */
+export async function pingRedis(): Promise<boolean> {
+  const redis = getRedisConnection();
+  const res = await redis.ping();
+  return res === "PONG";
+}
+
 export function getJobQueue(): Queue<PackBuildJob> {
   return new Queue<PackBuildJob>(QUEUE_NAME, { connection: getRedisConnection() });
 }

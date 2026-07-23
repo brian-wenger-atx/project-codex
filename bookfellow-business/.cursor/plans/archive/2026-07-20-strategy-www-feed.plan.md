@@ -24,7 +24,7 @@ isProject: true
 | | |
 |--|--|
 | **Order** | **1. this plan** → **2. www queue / lanes** |
-| **Sibling** | [`codex-www/.cursor/plans/2026-07-20-www-queue-lanes.plan.md`](/mnt/DataStore/Ventures/project-codex/codex-www/.cursor/plans/2026-07-20-www-queue-lanes.plan.md) |
+| **Sibling** | [`codex-www/.cursor/plans/2026-07-20-www-queue-lanes.plan.md`](/mnt/DataStore/Ventures/bookfellow/bookfellow-www/.cursor/plans/2026-07-20-www-queue-lanes.plan.md) |
 | **This plan owns** | `docs/www-feed.md`, business AGENTS/rule, cursor-shared contract paragraph |
 | **This plan must not** | Create or edit `codex-www/.cursor/` pins (`build-order.md`, `lanes.md`, plans) |
 | **Unlocks** | Www queue/lanes Build (pins read the feed; lane proposals stay proposals until www adopts) |

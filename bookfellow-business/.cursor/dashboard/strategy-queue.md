@@ -4,70 +4,102 @@ Lean direction pin for **Bookfellow** (business silo). Durable canon: [docs/](..
 
 ## North star
 
-**Companion for your books** — recall + return-to-book; trial→sub; allotment sketch; unlocks last **life of site** (+ ~3mo if fold); equal fiction/nonfiction; genre layouts; **not every book** (trade F/NF band). Brand: **Bookfellow** @ **bookfellow.io**. See [north-star.md](../../docs/north-star.md).
+**Companion for your books** — recall + return-to-book; trial→sub; allotment sketch; unlocks last **life of site** (+ ~3mo if fold); equal fiction/nonfiction; genre layouts; **not every book** (trade F/NF band). Brand: **Bookfellow** @ **bookfellow.io**. **Guiding principle:** read more · understand · reflect — free floor is mission ([decision](../../docs/decisions/2026-07-22-guiding-principle-read-understand-reflect.md)). See [north-star.md](../../docs/north-star.md).
 
 ## Now
 
-1. **Naming / rename** — brand locked **Bookfellow**; rename Build approved and sequenced across business → www → Ventures root → Work/hub — [bookfellow-rename](../plans/2026-07-21-bookfellow-rename.plan.md). This chat archived → [companion-glean-product-lean](../../docs/conversations/2026-07-21-companion-glean-product-lean.md).
-2. **Foundation (business)** — fill proposal packet under [docs/proposal/](../../docs/proposal/) (business proposal, SWOT, market analysis). Include pricing math risk (allotment + $6/$4) + MAM-vs-acquisition tension + **catalog boundaries** (not every book); stack baseline is Next/TS/Postgres/Redis/BullMQ/Stripe/Python workers.
-3. **Www** — foundation P0–P4 **complete** (lab `:4003`); product lanes later — Brian: www good enough for now **minus name**.
-4. Answer www asks-back before billing: exact $ vs ~$15 competitor anchor, allotment roll, trial shape, public cutover — [www-feed.md](../../docs/www-feed.md). Unlock permanence leaned yes (value, not discount).
+1. **Calendar (lean)** — **alpha ~mid-August** · **legal before October** · **Beta-1 site ~October** · **Beta-2 chat** (or GA without chat — open). Canon: [milestones](../../docs/proposal/milestones.md) · [alpha-beta-program](../../docs/ideas/alpha-beta-program-2026-07-22.md). Www pressure: **M4→M5** for mid-Aug.
+2. **Foundation (parallel)** — [foundation-map](../../docs/proposal/foundation-map.md). **Core 3** stubs; unit econ / ICP / rights / pricing / risks still open. Not a gate for mid-Aug alpha; needed before clean paid/public.
+3. **Friends alpha path** — bootstrap packs/AI before full P20; invite-gated; banners + P43 + verbose diagnostics. **No alpha Build plan yet.** [friends-alpha-bootstrap](../../docs/ideas/friends-alpha-bootstrap-2026-07-22.md) (**P44** / **M4→M5**; depth **M6–M10** tandem).
+4. **AI / LLM full upgrade** — **backlogged** ([ai-llm-decision-backlog](../../docs/ideas/ai-llm-decision-backlog-2026-07-22.md) / **P20**); reopen after foundation (+ alpha feedback if P44).
+5. **Layout lean** — AI/LLM folder ≠ packs; modules ↔ lanes — [modular-repo-layout](../../docs/ideas/modular-repo-layout-2026-07-22.md) (**P42** / **M4**).
+6. **Publisher plan (P45)** — umbrella; billable event **locked** (enter = unlock); unit/invoice open; **P46** parked. [publisher-plan](../../docs/ideas/publisher-plan-2026-07-22.md).
+7. **Www:** Ready **R1–R7** = requirements only; www owns **M1–M13**. IA: [decision](../../docs/decisions/2026-07-22-product-ia-mockup-locks.md).
+8. **Www foundation** — P0–P4 **complete**; placeholder **P13 + P25–P27**; **P38** SoT + **P9** auth/redeem wire **shipped** (M1).
+9. Answer asks-back: dual-beta cohorts / GA-without-chat; NDA+diagnostics consent; AI-off FAQ copy; then billing (M13) + partner unit/invoice.
+
+## Alpha / beta feedback
+
+Surfaced here when the every-page widget (**P43**) is live — [alpha-feedback-button](../../docs/ideas/alpha-feedback-button-2026-07-22.md). Agents roll up from www `business-feed.md` / export. **Capture wants ≠ commit to Build.**
+
+| Bucket | Count | Latest | Notes |
+|--------|------:|--------|-------|
+| Bugs | — | — | Empty until alpha |
+| Feedback | — | — | Empty until alpha |
+| Feature requests | — | — | Empty until alpha |
+
+_(Detail digests land under `docs/conversations/` or linked www exports when volume grows.)_
 
 ## Buckets
 
 | Bucket | Status | Pin |
 |--------|--------|-----|
-| Foundation (proposal / SWOT / market analysis) | **Primary** — stubs; leans updated 2026-07-20 | [proposal.md](proposal.md) |
-| Product | Active lean → **P1–P24** (P16/P23 parked) | [product.md](product.md) |
-| Product signals (www → us) | **Live** — re-harvested 2026-07-21 (P0–P4 complete) | [product-signals.md](product-signals.md) |
-| Market (GTM) | Parked — distinct from proposal market analysis | [market.md](market.md) |
-| Monetization | Lean — under ~$15 competitor band; permanence = value; asks open | [monetization.md](monetization.md) |
-| Ops | Dual-feed complete; **rename plan Next**; public/cloud cutover open | [ops.md](ops.md) |
+| Foundation (framing + operating model) | **Primary** — Core 3 stubs; [foundation-map](../../docs/proposal/foundation-map.md) live | [proposal.md](proposal.md) |
+| Product | **Mockups approved** → Ready **R1–R7**; www **M4→M5** alpha · **M6–M10** tandem; **P47–P50** alpha/beta program; **P51** density dial (AI-phase); **P45** publisher (event locked); **P46** parked; billing-trial / genre stay proposal | [product.md](product.md) |
+| Product signals (www → us) | **Live** — harvested alpha/beta program + P9 ship; dual-beta / consent / AI-off asks open | [product-signals.md](product-signals.md) |
+| Market (GTM) | **Calendar lean** — mid-Aug α · Beta-1 site ~Oct · Beta-2 chat · legal before Oct — [milestones](../../docs/proposal/milestones.md) | [market.md](market.md) |
+| Monetization | Lean — under ~$15; free floor = mission (P40); permanence = value; **P41** covers; asks open | [monetization.md](monetization.md) |
+| Ops | Dual-feed + rename archived; placeholder legal live; **legal before Oct** incl. NDA/diagnostics; public/cloud cutover open | [ops.md](ops.md) |
 
 Ideas backlog (link only): [ideas/backlog.md](../../docs/ideas/backlog.md) — idea-gen paused; intentional proposals go on www-feed.
 
 ## Your turn
 
-- **Placeholder posture:** **Waitlist** CTA (launch-adjacent; **no “beta”** on site) — **P26 Ready** for www; privacy **P25 Ready**
-- **Rename Build** in progress — A+B+C done (GitHub + local `origin` → `bookfellow`); next Phase D folder move — [bookfellow-rename](../plans/2026-07-21-bookfellow-rename.plan.md)
-- Model bake-off stays **strategy** — not www plan yet
-- **GTM lean:** friends **alpha** → **Reddit beta**; **P13** placeholder **live** (https://bookfellow.io) — eligibility bounds visible; no stack/roadmap leak
-- Confirm publisher offer: **companion free** with purchase (A) vs **host the book** free (B) — [ideas/publisher-free-with-purchase-2026-07-21.md](../../docs/ideas/publisher-free-with-purchase-2026-07-21.md)
-- Lock **membership $** vs Blinkist-class ~$15 (hold ~$10 / lower / closer under $15); whether $6/$4 move
-- Lock **allotment roll**
+- ~~Sign off mockups~~ **Done 2026-07-22** — Ready on www-feed
+- **Foundation:** next night = [foundation business meeting](../../docs/meetings/2026-07-23-foundation-business-meeting.md); research [prep](../../docs/research/2026-07-22-foundation-meeting-prep.md); then Core 3 from where hauled
+- **Calendar lean captured** — mid-Aug α / Beta-1 ~Oct / Beta-2 chat / legal before Oct — [milestones](../../docs/proposal/milestones.md); still lock alpha ship-gate + legal scope + cohorts / GA-without-chat
+- **Alpha:** file www Build plan when ready — ~3 weeks to mid-Aug target; P43 + diagnostics (P48) with alpha
+- Produce hero/wordmark/OG stills (**V1/V8/V9**) — [visual-assets.md](../../docs/product/visual-assets.md)
+- **Placeholder:** waitlist + invite-code BR live; cutover drops waitlist for frictionless signup (P33)
+- Model bake-off stays **strategy** — not www plan yet (post–friends-alpha for “AI done”)
+- **GTM lean:** friends **alpha** (bootstrap AI) → **Beta-1 site** (Reddit lean) → **Beta-2 chat**; **P13** placeholder **live**
+- Confirm publisher offer: **companion free** with purchase (A) vs **host the book** free (B)
+- ~~Redeem billable event~~ **Done** — enter = unlock (one event)
+- ~~P46 insights~~ **Parked** — brainstorm only; not wanted
+- Lock partner redeem **unit** + who invoices — [publisher-plan](../../docs/ideas/publisher-plan-2026-07-22.md)
+- Lock **dual-beta cohorts** + whether **GA without chat** is OK — [alpha-beta-program](../../docs/ideas/alpha-beta-program-2026-07-22.md)
+- Lock **NDA + diagnostics/replay consent** (retention; same vs separate checkbox) before mid-Aug alpha
+- Confirm **AI-off** FAQ/ToS wording (companion off / packs on)
+- Lock **membership $** vs Blinkist-class ~$15; whether $6/$4 move
+- Lock **credit / allotment roll**
 - Lock **trial** length / contents — blocks trial→sub flow
-- Say when **public** may leave NAS lab / prototype supply
+- Say when **public product** may leave NAS lab / prototype supply
 - Mark foundation ready when proposal/SWOT/market analysis are good enough
 
 ## Recent wins
 
-- 2026-07-21 — **P13 / placeholder-site adopted in www** — bookfellow.io live
-- 2026-07-21 — **Catalog edges locked** — self-pub hard no; parked indefinite; waitlist→Brian; eligibility on P13
-- 2026-07-21 — Future-chapter pointers NF-strong / fiction-light; model bake-off stays strategy; Brian → naming
-- 2026-07-21 — **Spoiler-safe = all surfaces**; P15 F/NF polish; P16 parked (Snipd niche); P24 citations; P23 genre ML later
-- 2026-07-21 — **Catalog boundaries lean** — not every book; trade F/NF in; textbooks/academic/comics/unofficial/etc. hard out; P22
-- 2026-07-21 — **Image copy lean** — words on images (more NF / less fiction); strip-text advice rejected
-- 2026-07-21 — **Brian lean** — library/chat/notes core; cast sheet required; model routing (not Gemini-locked); cumulative MCQ; listen-along visual research
-- 2026-07-21 — **Broader companion glean** — P14 spoiler-safe, P15 session/jog, P16 listen-capture
-- 2026-07-21 — **Competitor glean** — P10–P13 chat/notes/voice + quiet placeholder
-- 2026-07-21 — **Rename Phase C done** — local origin → `brian-wenger-atx/bookfellow`; GIT.md/README updated
-- 2026-07-21 — **Rename decisions locked** — `{bookfellow-business,bookfellow-www}`, GitHub rename, NAS same wave, `@bookfellow/*`, lab wipe
-- 2026-07-21 — **Rename plan filed** — full Bookfellow path/repo/NAS plan (Build not approved)
-- 2026-07-21 — **P26 waitlist CTA** — launch-adjacent; no “beta” on site
-- 2026-07-21 — **Substantive surface strategy** — policy+dates+product path counters Melbourne beta
-- 2026-07-21 — **Competitive goals locked** — product+Reddit · ITU at launch · App Store/SEO; copy guardrails
-- 2026-07-21 — **Geo/TM lean locked** — AU-only redirect + US-first copy enough; ITU only if launch is real
-- 2026-07-21 — **AU geo live** on bookfellow.io (Cloudflare → `/unavailable-au.html`)
-- 2026-07-21 — **Privacy P25 drafted** — [legal/privacy-policy.md](../../docs/legal/privacy-policy.md); Ready for www apply (May 14, 2026)
-- 2026-07-21 — **Brand locked** — Bookfellow / bookfellow.io; Project Codex = temporary title only
-- 2026-07-21 — **Domains owned** — bookfellow.io + bookfellow.cc (no hosting)
-- 2026-07-21 — **Publisher free-with-purchase** — P9; third unlock path (companion free w/ proof of buy)
-- 2026-07-21 — Harvest note — www foundation **P0–P4 complete** (was stale as P2+)
-- 2026-07-20 — **Mobile lean** — iOS + Android website wrappers + core cache (P7); after web
-- 2026-07-20 — **Permanence scoped** — life of site + ~3mo wind-down if fold; legal
-- 2026-07-20 — **Competitive pricing frame** — under ~$15 unlimited comps; permanence = value; quarterly free = concrete
-- 2026-07-20 — **Unlock permanence lean** — keep content without active sub
-- 2026-07-20 — **Pricing lean revised** — 1 free/qtr all tiers; paid $10→+2/mo; $6/$4 extras (math open)
-- 2026-07-20 — **Harvested** www reverse feed; dual-feed pair complete; Ready reverse-feed cleared
-- 2026-07-20 — **dual-feed-business Built** — `docs/protocol/dual-feed.md` locked
-- 2026-07-20 — V1 leans locked; Product proposals P1–P6 on www-feed
+- 2026-07-23 — **P51 content density** — condensed / average / verbose per book (chapter reviews first); AI-phase proposal — [idea](../../docs/ideas/content-density-levels-2026-07-23.md)
+
+- 2026-07-22 — **Foundation business meeting prepared** — [meeting](../../docs/meetings/2026-07-23-foundation-business-meeting.md) + [research prep](../../docs/research/2026-07-22-foundation-meeting-prep.md); checklist walk until haul
+
+- 2026-07-22 — **Harvested www feed** — alpha/beta program (P47–P50); P9 auth/redeem ship; dual-beta on milestones
+- 2026-07-22 — **Redeem enter = unlock** locked; **P46** parked (backlog brainstorm only)
+- 2026-07-22 — **Calendar lean** — mid-Aug friends alpha · ~Oct beta (feedback) · legal before Oct — [milestones](../../docs/proposal/milestones.md)
+- 2026-07-22 — **Publisher plan (P45)**; harvested www redeem attribution; M11→**M4–M6** feed fix
+- 2026-07-22 — **P45 Partner with us** (first cut — now surface of publisher plan)
+- 2026-07-22 — **Aligned with www** — ack www owns Build/module order; Ready ≠ queue; lanes + P42–P44 marked adopted for sequencing; foundation parallel to M1–M4
+- 2026-07-22 — **Foundation map** + **AI decision backlog** — [foundation-map](../../docs/proposal/foundation-map.md); [ai-llm-decision-backlog](../../docs/ideas/ai-llm-decision-backlog-2026-07-22.md); Core 3 = next writing
+- 2026-07-22 — **P42–P44** — modular AI vs packs folders; alpha feedback → this queue; friends-alpha bootstrap lean; www **M4–M5**; **no plan filed**
+- 2026-07-22 — **Mockups approved → Ready R1–R7** on [www-feed.md](../../docs/www-feed.md) — requirement readiness (www sequences)
+- 2026-07-22 — **P41 refine** — covers primary (signed-in); API first; $0 affiliate OK; logged-out covers deferred ([idea](../../docs/ideas/cover-art-referral-lean-2026-07-22.md))
+- 2026-07-22 — **P41 covers + buy referral** — real covers; Audible-class links + affiliate; forgiveness lean; prefer API over scrape ([idea](../../docs/ideas/cover-art-referral-lean-2026-07-22.md))
+- 2026-07-22 — **P40 guiding principle** — read more · understand · reflect; 1 free/qtr = mission; logged-out must carry it
+- 2026-07-22 — **P39 punchy voice** — enhance / supercharge / dig deeper / throughlines; [voice-copy.md](../../docs/product/voice-copy.md)
+- 2026-07-22 — **Capture pass** — morning ideas → digest + IA decision; P25–P27 adopted; post-mockup Build order on www-feed; pins refreshed
+- 2026-07-22 — **P34 book page** — Overview + inline companion; shrink hero; hamburger books → Overview (not Recap)
+- 2026-07-22 — **P38 persist user state** — settings, custom order, notes, UI changes → account SoT across sessions
+- 2026-07-22 — **P33 mobile logged-out** — phone canvas; same public pages as desktop; chrome pairs with P34
+- 2026-07-22 — **P34 mobile sync** — phone canvas matched to desktop product; chrome stays hamburger + breadcrumbs
+- 2026-07-22 — **P37 rail chrome** — Settings+Collapse; hover-expand Must; Search/Notifications deferred
+- 2026-07-22 — **Library home** — signed-in default Library; Bf + Library + wordmark → Library
+- 2026-07-22 — **P35 Recap tab** — Codex glance; first/default; auto-open; account + per-book prefs
+- 2026-07-22 — **P33 UX + P36** — above-fold home; unified auth/redeem; FAQ; publisher referrals V2
+- 2026-07-22 — **P34 chrome** — hamburger + breadcrumbs (not bottom nav)
+- 2026-07-22 — **Quizzes + recap + packs** — 5/10/15 runs; donut recap; P32 versioned packs; V1 mockup happy
+- 2026-07-22 — **Companion depth** — Notes/Cast/Quiz + chapter/quiz pages; Edit; CTAs; P31 quiz sizing
+- 2026-07-22 — **P30 motion list** — [animation-surfaces.md](../../docs/product/animation-surfaces.md)
+- 2026-07-22 — **P29 companion frame** — Overview embeds tabs; default **Recap**
+- 2026-07-22 — **P17 Library lean** — Add popout; covers↔table; S/M/L; Custom; square audiobook covers; credits; Recent/Pin 3
+- 2026-07-22 — **P28 Appearance** — Slate + Harbor default; background × accent dials
+- 2026-07-21 — **P25–P27** Privacy + waitlist + Terms **live** on bookfellow.io
+- 2026-07-21 — **Rename Built + archived**; catalog edges locked; brand Bookfellow

@@ -1,6 +1,6 @@
-# codex-business
+# bookfellow-business
 
-Strategy + directionality silo for **Bookfellow** (`bookfellow.io`). Folder path still `codex-business/` until a rename.
+Strategy + directionality silo for **Bookfellow** (`bookfellow.io`).
 
 Open this folder when doing vault / strat work. Default day-to-day: Ventures root.
 

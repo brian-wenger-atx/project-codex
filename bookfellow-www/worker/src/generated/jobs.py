@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import BaseModel, Field
 
@@ -18,4 +18,11 @@ class PackBuildJob(BaseModel):
     model_config = {"populate_by_name": True}
 
 
-JobPayload = PackBuildJob
+class CreditScanJob(BaseModel):
+    type: Literal["credit.scan"] = "credit.scan"
+    requested_at: str = Field(alias="requestedAt")
+
+    model_config = {"populate_by_name": True}
+
+
+JobPayload = Union[PackBuildJob, CreditScanJob]

@@ -28,7 +28,7 @@ isProject: true
 |--|--|
 | **Order** | **1. this plan** → **2. dual-feed-www** (aligned 2026-07-20) |
 | **This plan** | [`codex-business/.cursor/plans/2026-07-20-dual-feed-business.plan.md`](2026-07-20-dual-feed-business.plan.md) |
-| **Sibling (www)** | [`codex-www/.cursor/plans/2026-07-20-dual-feed-www.plan.md`](/mnt/DataStore/Ventures/project-codex/codex-www/.cursor/plans/2026-07-20-dual-feed-www.plan.md) |
+| **Sibling (www)** | [`codex-www/.cursor/plans/2026-07-20-dual-feed-www.plan.md`](/mnt/DataStore/Ventures/bookfellow/bookfellow-www/.cursor/plans/2026-07-20-dual-feed-www.plan.md) |
 | **This plan owns** | Dual-feed **contract** doc, business harvest habit, `product-signals` pin, www-feed schema notes for reverse feed, cursor-shared dual-feed paragraph |
 | **This plan must not** | Create or edit `codex-www/docs/business-feed.md`, www AGENTS/rules/pins, or www plans |
 | **Unlocks** | Www dual-feed plan implements `business-feed.md` against locked `docs/protocol/dual-feed.md` |
@@ -78,7 +78,7 @@ From 2026-07-20 chat (pre-plan):
 
 ## Locked decisions (aligned 2026-07-20)
 
-1. **Www owns** `/mnt/DataStore/Ventures/project-codex/codex-www/docs/business-feed.md` — business **reads only**.
+1. **Www owns** `/mnt/DataStore/Ventures/bookfellow/bookfellow-www/docs/business-feed.md` — business **reads only**.
 2. **Business owns** `docs/www-feed.md` — www **reads only**.
 3. **Brian does not maintain feeds** — writing silo updates its feed **same turn**; reading silo harvests and refreshes **its** pins when it sees new signals.
 4. **No shared registry / no hub-work-queue clone** — markdown + agent habits only.

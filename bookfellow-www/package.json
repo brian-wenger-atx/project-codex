@@ -3,6 +3,7 @@
   "private": true,
   "packageManager": "pnpm@10.12.4",
   "scripts": {
+    "prepare": "husky",
     "dev": "pnpm --filter @bookfellow/web dev",
     "build": "pnpm --filter @bookfellow/web build",
     "start": "pnpm --filter @bookfellow/web start",
@@ -15,6 +16,7 @@
     "wrangler": "^4.113.0"
   },
   "devDependencies": {
-    "@types/pg": "^8.15.4"
+    "@types/pg": "^8.15.4",
+    "husky": "^9.1.7"
   }
 }

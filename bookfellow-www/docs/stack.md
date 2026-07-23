@@ -18,7 +18,7 @@
 | Payments | **Stripe** (Checkout + Portal; App Router webhook = `req.text()` + idempotent events) |
 | Data access | **Explicit SQL migrations**; Next DB client **singleton**; **PgBouncer** in compose |
 | AI / pack generation | **Python workers** + **job_id claim in Postgres before Gemini**; artifacts to object storage |
-| Auth | **Better Auth** (email/password + DB sessions) — M1; OAuth later |
+| Auth | **Better Auth** (email/password + DB sessions; explicit SQL schema) — M1. Password min 12 + HIBP + DB rate limits. PII posture: [`.cursor/backlog.md`](../.cursor/backlog.md) § Security / PII. OAuth later |
 | Interim host | Docker Compose on NAS (`bookfellow`, lab host only, LAN `:4003`) |
 | Final host | Managed cloud — separate cutover plan |
 
@@ -95,4 +95,5 @@ Www locked stack 2026-07-20 (this file). Please echo a one-liner on `bookfellow-
 
 ## Changelog
 
+- 2026-07-23 — Auth cell: Better Auth + explicit SQL; password 12 + HIBP + DB rate limits; link PII posture (Plan 7).
 - 2026-07-20 — P0 lock: Next.js + Postgres + Redis + BullMQ + Stripe + Python workers; five hard rules; competitor matrix.

@@ -4,12 +4,24 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
-import { LabBadge } from "@/components/shell/LabBadge";
 
-export default function CreateAccountPage() {
+const fieldClass =
+  "min-h-11 rounded-lg border border-[color:var(--ink-muted)]/30 bg-white px-3 text-base";
+
+type Props = {
+  initialRedeem?: string;
+  initialInvite?: string;
+};
+
+export function CreateAccountForm({
+  initialRedeem = "",
+  initialInvite = "",
+}: Props) {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [inviteCode, setInviteCode] = useState(initialInvite);
+  const [redeemCode, setRedeemCode] = useState(initialRedeem);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -18,10 +30,24 @@ export default function CreateAccountPage() {
     setBusy(true);
     setError(null);
     try {
+      const trimmedInvite = inviteCode.trim();
+      if (!trimmedInvite) {
+        setError("Invite code required");
+        return;
+      }
+      const trimmedRedeem = redeemCode.trim();
       const res = await authClient.signUp.email({
         email,
         password,
         name: email.split("@")[0] || "reader",
+        pendingRedeemCode: trimmedRedeem.length > 0 ? trimmedRedeem : null,
+        inviteTokenInput: trimmedInvite,
+      } as {
+        email: string;
+        password: string;
+        name: string;
+        pendingRedeemCode: string | null;
+        inviteTokenInput: string;
       });
       if (res.error) {
         setError(res.error.message || "Create account failed");
@@ -39,18 +65,28 @@ export default function CreateAccountPage() {
   return (
     <div className="flex flex-col gap-6">
       <header>
-        <div className="flex flex-wrap items-center gap-2">
-          <h1 className="m-0 font-[family-name:var(--font-display)] text-2xl font-normal sm:text-3xl">
-            Create account
-          </h1>
-          <LabBadge />
-        </div>
+        <h1 className="m-0 font-[family-name:var(--font-display)] text-2xl font-normal sm:text-3xl">
+          Create account
+        </h1>
         <p className="mt-2 text-[color:var(--ink-muted)]">
-          Email and password. Display name comes from your email for now.
+          Enter your invite code to get started.
         </p>
       </header>
 
       <form onSubmit={onSubmit} className="flex max-w-md flex-col gap-4">
+        <label className="flex flex-col gap-1 text-sm">
+          Invite code
+          <input
+            type="text"
+            name="invite"
+            required
+            autoComplete="off"
+            spellCheck={false}
+            value={inviteCode}
+            onChange={(e) => setInviteCode(e.target.value)}
+            className={fieldClass}
+          />
+        </label>
         <label className="flex flex-col gap-1 text-sm">
           Email
           <input
@@ -59,7 +95,7 @@ export default function CreateAccountPage() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="min-h-11 rounded-lg border border-[color:var(--ink-muted)]/30 bg-white px-3"
+            className={fieldClass}
           />
         </label>
         <label className="flex flex-col gap-1 text-sm">
@@ -67,11 +103,24 @@ export default function CreateAccountPage() {
           <input
             type="password"
             required
-            minLength={8}
+            minLength={12}
             autoComplete="new-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="min-h-11 rounded-lg border border-[color:var(--ink-muted)]/30 bg-white px-3"
+            className={fieldClass}
+          />
+        </label>
+        <label className="flex flex-col gap-1 text-sm">
+          Have a redemption code?
+          <input
+            type="text"
+            name="redeem"
+            autoComplete="off"
+            spellCheck={false}
+            placeholder="Optional"
+            value={redeemCode}
+            onChange={(e) => setRedeemCode(e.target.value)}
+            className={fieldClass}
           />
         </label>
         {error ? (

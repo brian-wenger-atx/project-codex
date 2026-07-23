@@ -1,6 +1,6 @@
 # Business dashboard pins
 
-Agent-maintained operational pins for **codex-business**. No Python generator — update same turn after meaningful strat/plan work.
+Agent-maintained operational pins for **bookfellow-business**. No Python generator — update same turn after meaningful strat/plan work.
 
 Durable strategy prose stays in `docs/`. These files summarize and point.
 

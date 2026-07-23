@@ -3,20 +3,27 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
-import { LabBadge } from "./LabBadge";
-import { NAV_ITEMS } from "./nav";
+import { primaryNavFor, type ShellUser } from "./nav";
 
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-export function MobileNav() {
+function itemClass(active: boolean) {
+  return `block rounded-lg px-3 py-3 text-base ${
+    active ? "bg-[color:var(--sidebar-active)]" : "text-[color:var(--sidebar-muted)]"
+  }`;
+}
+
+export function MobileNav({ user }: { user: ShellUser | null }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const panelId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const items = primaryNavFor(user);
+  const showAdmin = user?.role === "admin";
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -50,13 +57,9 @@ export function MobileNav() {
     <>
       <header className="shell-mobile-bar sticky top-0 z-40 items-center justify-between gap-3 border-b border-[color:var(--border)] bg-[color:var(--canvas-elevated)] px-4 py-3 pt-[max(0.75rem,var(--safe-top))] pl-[max(1rem,var(--safe-left))] pr-[max(1rem,var(--safe-right))]">
         <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <p className="m-0 truncate font-[family-name:var(--font-display)] text-base tracking-wide">
-              Bookfellow
-            </p>
-            <LabBadge />
-          </div>
-          <p className="m-0 text-xs text-[color:var(--ink-muted)]">lab</p>
+          <p className="m-0 truncate font-[family-name:var(--font-display)] text-base tracking-wide">
+            Bookfellow
+          </p>
         </div>
         <button
           ref={buttonRef}
@@ -90,25 +93,17 @@ export function MobileNav() {
             aria-label="Mobile"
           >
             <div className="mb-4 flex items-center justify-between gap-2">
-              <div>
-                <p className="m-0 font-[family-name:var(--font-display)] text-lg">Bookfellow</p>
-                <p className="m-0 text-sm text-[color:var(--sidebar-muted)]">lab</p>
-              </div>
-              <LabBadge tone="dark" />
+              <p className="m-0 font-[family-name:var(--font-display)] text-lg">Bookfellow</p>
             </div>
             <ul className="m-0 flex list-none flex-col gap-1 p-0">
-              {NAV_ITEMS.map((item, i) => {
+              {items.map((item, i) => {
                 const active = isActive(pathname, item.href);
                 return (
                   <li key={item.href}>
                     <Link
                       ref={i === 0 ? firstLinkRef : undefined}
                       href={item.href}
-                      className={`block rounded-lg px-3 py-3 text-base ${
-                        active
-                          ? "bg-[color:var(--sidebar-active)]"
-                          : "text-[color:var(--sidebar-muted)]"
-                      }`}
+                      className={itemClass(active)}
                       aria-current={active ? "page" : undefined}
                       onClick={close}
                     >
@@ -117,7 +112,22 @@ export function MobileNav() {
                   </li>
                 );
               })}
+              {showAdmin ? (
+                <li>
+                  <Link
+                    href="/admin"
+                    className={itemClass(isActive(pathname, "/admin"))}
+                    aria-current={isActive(pathname, "/admin") ? "page" : undefined}
+                    onClick={close}
+                  >
+                    Admin
+                  </Link>
+                </li>
+              ) : null}
             </ul>
+            <div className="mt-auto flex flex-col pt-4">
+              {/* Account / user control lands here in M2 — no separator above it */}
+            </div>
           </nav>
         </div>
       ) : null}

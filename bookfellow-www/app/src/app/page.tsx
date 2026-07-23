@@ -13,7 +13,7 @@ export default async function HomePage() {
           Bookfellow
         </h1>
         <p className="mt-2 text-base text-[color:var(--ink-muted)] sm:text-lg">
-          Lab shell
+          Your personal reading companion
         </p>
       </header>
 

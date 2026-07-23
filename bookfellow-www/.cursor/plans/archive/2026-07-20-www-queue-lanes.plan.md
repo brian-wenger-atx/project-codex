@@ -1,6 +1,8 @@
 ---
 name: www-queue-lanes
 overview: Create codex-www product pins (build-order.md + lanes.md) and agent habits; consume strategy www-feed; no business vault writes.
+status: closed
+shipped: 2026-07-20
 todos:
   - id: create-pins
     content: Create .cursor/build-order.md and .cursor/lanes.md with starter structure + upstream feed prerequisite
@@ -23,7 +25,7 @@ isProject: true
 | | |
 |--|--|
 | **Order** | **1. strategy www feed** → **2. this plan** |
-| **Sibling (upstream)** | [`codex-business/.cursor/plans/2026-07-20-strategy-www-feed.plan.md`](/mnt/DataStore/Ventures/project-codex/codex-business/.cursor/plans/2026-07-20-strategy-www-feed.plan.md) |
+| **Sibling (upstream)** | [`codex-business/.cursor/plans/2026-07-20-strategy-www-feed.plan.md`](/mnt/DataStore/Ventures/bookfellow/bookfellow-business/.cursor/plans/2026-07-20-strategy-www-feed.plan.md) |
 | **Depends** | Strategy www-feed **Built** — `codex-business/docs/www-feed.md` exists (confirmed 2026-07-20) |
 | **This plan owns** | `.cursor/build-order.md`, `.cursor/lanes.md`, www AGENTS/rule for pins + feed-read |
 | **This plan must not** | Edit `codex-business/` strategy canon or invent strategy into www docs |
@@ -124,14 +126,14 @@ No hub-work-queue Python clone.
 
 | Plan | Path | Status |
 |------|------|--------|
-| strategy-www-feed | `/mnt/DataStore/Ventures/project-codex/codex-business/.cursor/plans/2026-07-20-strategy-www-feed.plan.md` | built |
-| Strategy feed doc | `/mnt/DataStore/Ventures/project-codex/codex-business/docs/www-feed.md` | must exist before product plans from Ready |
+| strategy-www-feed | `/mnt/DataStore/Ventures/bookfellow/bookfellow-business/.cursor/plans/2026-07-20-strategy-www-feed.plan.md` | built |
+| Strategy feed doc | `/mnt/DataStore/Ventures/bookfellow/bookfellow-business/docs/www-feed.md` | must exist before product plans from Ready |
 
 ## Active / next (this silo)
 
 | Order | Plan | Lane | Path | Status |
 |------:|------|------|------|--------|
-| 1 | www-queue-lanes | foundation | `.cursor/plans/2026-07-20-www-queue-lanes.plan.md` | building → shipped on Build complete |
+| 1 | www-queue-lanes | foundation | `.cursor/plans/archive/2026-07-20-www-queue-lanes.plan.md` | closed / archived 2026-07-21 |
 
 ## Queued
 
@@ -154,7 +156,7 @@ _(move rows here when done)_
 
 ### `AGENTS.md`
 
-- Resume: read `/mnt/DataStore/Ventures/project-codex/codex-business/docs/www-feed.md` before product planning / lane changes.
+- Resume: read `/mnt/DataStore/Ventures/bookfellow/bookfellow-business/docs/www-feed.md` before product planning / lane changes.
 - Habit: update `.cursor/build-order.md` and `.cursor/lanes.md` same-turn when plans or lanes change.
 - Habit: when adopting a feed lane proposal → note for business to mark feed `adopted in www`.
 - Must not: edit `codex-business/` strategy canon from a www-only workspace.

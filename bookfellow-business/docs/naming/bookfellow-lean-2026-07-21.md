@@ -90,7 +90,7 @@ Friends **alpha** → **Reddit beta**. App Store wrappers later.
 | **Bookfellow** / **bookfellow.io** | Public product + venture brand |
 | **Project Codex** | Retired temporary working title (docs/paths may still say it) |
 | **Codex** (Docking Bay) | Homelab personal companion — **unchanged** |
-| Folder paths `project-codex/`, `codex-business/`, `codex-www/`, NAS app `projectcodex` | Internal until Brian asks to rename |
+| Folder paths `bookfellow/{bookfellow-business,bookfellow-www}/`; NAS app `bookfellow` | Renamed (Phases D–F) |
 
 ## IP risk / TM — eyes open (not blocking pre-alpha)
 
@@ -225,7 +225,7 @@ Platform complaints don’t need a lawsuit. Plan:
 
 Brian lean: **US-first copy** (privacy + unavailable page); **AU-only geo redirect** on `bookfellow.io` for now — not every non-US country. Enough vs Melbourne home market. App Store: exclude AU when that lands. **Phase B (ITU)** only when launch is real — same uncertainty applies to them.
 
-**Placeholder geo (live):** Cloudflare rule `AU geo — unavailable` → `/unavailable-au.html`. Runbook: [`codex-www/docs/runbooks/bookfellow-placeholder-dns.md`](/mnt/DataStore/Ventures/project-codex/codex-www/docs/runbooks/bookfellow-placeholder-dns.md).
+**Placeholder geo (live):** Cloudflare rule `AU geo — unavailable` → `/unavailable-au.html`. Runbook: [`bookfellow-www/docs/runbooks/bookfellow-placeholder-dns.md`](/mnt/DataStore/Ventures/bookfellow/bookfellow-www/docs/runbooks/bookfellow-placeholder-dns.md).
 
 ### TM next steps (when convenient — not before alpha unless Yellow)
 
@@ -248,7 +248,7 @@ Use if Red trigger fires. Re-check domains at registrar before switching; don’
 
 **Drop for pivot shortlist:** Storymate (AI story-gen clash), Bookside (BookSide App Store family app), Alongside (HR ATS owns `.com`), Afterword/Afterlight/Throughline (crowded).
 
-**Pivot mechanics (when Red):** new primary domain → update www chrome + placeholder (P13) → defer `@bookfellow/*` package rename until direction clear; [bookfellow-rename plan](../.cursor/plans/2026-07-21-bookfellow-rename.plan.md) pauses or retargets to new slug.
+**Pivot mechanics (when Red):** new primary domain → update www chrome + placeholder (P13) → defer `@bookfellow/*` package rename until direction clear; [bookfellow-rename plan](../.cursor/plans/archive/2026-07-21-bookfellow-rename-cutover.plan.md) pauses or retargets to new slug.
 
 Sources: [companion-five-2026-07-21.md](companion-five-2026-07-21.md), [shortlist-companions-2026-07-21.md](shortlist-companions-2026-07-21.md), [glean-bookfellow-app-2026-07-21.md](../ideas/glean-bookfellow-app-2026-07-21.md).
 

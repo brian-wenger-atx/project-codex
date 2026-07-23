@@ -15,15 +15,27 @@ Update **build-order + lanes** same turn when plans are created/reordered/Built/
 
 ## Strategy feed (read-only from www)
 
-Before product planning or lane changes — and whenever Brian asks to look at / check the feed — read:
+Canonical path:
 
 `/mnt/DataStore/Ventures/bookfellow/bookfellow-business/docs/www-feed.md`
 
-### Feed → lanes (habit)
+### Auto-ingest (mandatory)
 
-1. Read feed **Lane proposals** + Product proposals / Ready before planning.
-2. Www owns consolidation in `.cursor/lanes.md` (**Adopted** + **Inferred sequence** + **Later / park**). Do **not** auto-mirror feed rows into a Pending table (`scripts/www-lanes-sync.py` is retired no-op).
-3. On adopt: move into Adopted, refresh Inferred sequence, note business to mark feed status `adopted in www`.
+When **any** of these is true, ingest **same turn** (do not wait for Brian to say “look at the feed”):
+
+- Session starts product / lane / build-order / backlog work
+- Feed **Meta Last updated** is newer than last www harvest (check Meta first)
+- Brian says the feed was updated / check the feed / ingest
+
+**Ingest = bucket, not copy order:**
+
+1. Read Meta + Direction + Priorities + Ready + Product proposals + Lane proposals + Open questions + Changelog delta.
+2. Bucket into `.cursor/lanes.md` (**Adopted** / **Later / park**) + `.cursor/backlog.md` requirements.
+3. **Www owns Build sequence** in `.cursor/build-order.md` **Active / next** (modules + smoke). Feed Ready / “first Builds” / R-labels are **inputs only** — never paste them as execution order.
+4. On adopt: note business (via `docs/business-feed.md`) to mark feed status `adopted in www`.
+5. Do **not** auto-mirror feed rows into a Pending table (`scripts/www-lanes-sync.py` is retired no-op).
+
+**Cadence Brian locked:** one module at a time; smoke before set; revisit OK; no mid-module bouncing.
 
 ### Intake fold (plan create / discuss)
 

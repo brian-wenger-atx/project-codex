@@ -1,7 +1,9 @@
 import { betterAuth } from "better-auth";
 import { APIError } from "better-auth/api";
+import { haveIBeenPwned } from "better-auth/plugins";
 import { Pool, type Pool as PgPool } from "pg";
 import { getPool } from "@/lib/db";
+import { consumeInvite, findValidInvite } from "@/lib/invites";
 
 const BUILD_PLACEHOLDER_SECRET = "build-placeholder-secret-not-for-runtime";
 
@@ -61,7 +63,27 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: false,
+    minPasswordLength: 12,
   },
+  session: {
+    // Documented in docs/runbooks/account-auth-admin.md (ASVS V7)
+    expiresIn: 60 * 60 * 24 * 7, // 7 days absolute
+    updateAge: 60 * 60 * 24, // refresh once per day when used
+  },
+  rateLimit: {
+    enabled: true,
+    storage: "database",
+    window: 60,
+    max: 100,
+    customRules: {
+      "/sign-in/email": { window: 10, max: 3 },
+      "/sign-up/email": { window: 60, max: 5 },
+      "/request-password-reset": { window: 60, max: 3 },
+      "/forget-password": { window: 60, max: 3 },
+      "/reset-password": { window: 60, max: 5 },
+    },
+  },
+  plugins: [haveIBeenPwned()],
   user: {
     additionalFields: {
       role: {
@@ -76,6 +98,24 @@ export const auth = betterAuth({
         input: false,
         fieldName: "disabled_at",
       },
+      pendingRedeemCode: {
+        type: "string",
+        required: false,
+        input: true,
+        fieldName: "pending_redeem_code",
+      },
+      inviteTokenInput: {
+        type: "string",
+        required: true,
+        input: true,
+        fieldName: "invite_token_input",
+      },
+      inviteId: {
+        type: "string",
+        required: false,
+        input: false,
+        fieldName: "invite_id",
+      },
     },
   },
   databaseHooks: {
@@ -88,14 +128,58 @@ export const auth = betterAuth({
             user.name && user.name.trim().length > 0
               ? user.name
               : localPart(email);
+          const raw = (
+            user as { pendingRedeemCode?: string | null }
+          ).pendingRedeemCode;
+          const trimmed =
+            typeof raw === "string" ? raw.trim() : raw == null ? "" : String(raw).trim();
+          const inviteRaw = (
+            user as { inviteTokenInput?: string | null }
+          ).inviteTokenInput;
+          const inviteToken =
+            typeof inviteRaw === "string"
+              ? inviteRaw.trim()
+              : inviteRaw == null
+                ? ""
+                : String(inviteRaw).trim();
+          const invite = await findValidInvite(email, inviteToken);
+          if (!invite.ok) {
+            throw new APIError("BAD_REQUEST", { message: invite.error });
+          }
           return {
             data: {
               ...user,
               email,
               name,
               role,
+              emailVerified: true,
+              pendingRedeemCode: trimmed.length > 0 ? trimmed : null,
+              inviteTokenInput: null,
+              inviteId: invite.inviteId,
             },
           };
+        },
+        after: async (user) => {
+          const inviteId = (user as { inviteId?: string | null }).inviteId;
+          if (!inviteId) {
+            throw new APIError("BAD_REQUEST", {
+              message: "Invite required",
+            });
+          }
+          const ok = await consumeInvite(inviteId, user.id);
+          if (!ok) {
+            const pool = getPool();
+            await pool.query(`DELETE FROM "session" WHERE "userId" = $1`, [
+              user.id,
+            ]);
+            await pool.query(`DELETE FROM "account" WHERE "userId" = $1`, [
+              user.id,
+            ]);
+            await pool.query(`DELETE FROM "user" WHERE "id" = $1`, [user.id]);
+            throw new APIError("BAD_REQUEST", {
+              message: "Invite already used",
+            });
+          }
         },
       },
     },

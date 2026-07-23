@@ -36,7 +36,7 @@ dig +short NS bookfellow.cc @1.1.1.1
 
 ## Phase B — Email: `support@bookfellow.io`
 
-Pattern matches dockingbay — see [project-codex-email-cursor-setup.md](/mnt/DataStore/Ventures/project-codex/codex-business/docs/protocol/project-codex-email-cursor-setup.md).
+Pattern matches dockingbay — see [project-codex-email-cursor-setup.md](/mnt/DataStore/Ventures/bookfellow/bookfellow-business/docs/protocol/project-codex-email-cursor-setup.md).
 
 **Hard gate:** Do not treat the site as live until a test message to `support@bookfellow.io` arrives in your inbox.
 
@@ -56,17 +56,18 @@ Pattern matches dockingbay — see [project-codex-email-cursor-setup.md](/mnt/Da
 
 ## Phase C — Cloudflare Pages deploy
 
-Static files live in [`codex-www/sites/placeholder/`](../../sites/placeholder/).
+Static files live in [`bookfellow-www/sites/placeholder/`](../../sites/placeholder/).
 
 ### C1. One-shot deploy (Wrangler)
 
+**Standing (Brian 2026-07-21):** Placeholder Builds that change `sites/placeholder/` include this deploy **same turn** — assume go-ahead; do not ask again for wrangler push unless Brian opts out (“don’t deploy” / “no push”).
+
 ```bash
-cd /mnt/DataStore/Ventures/project-codex/codex-www/sites/placeholder
-npx wrangler login
+cd /mnt/DataStore/Ventures/bookfellow/bookfellow-www/sites/placeholder
 npx wrangler pages deploy . --project-name=bookfellow-placeholder --branch=main
 ```
 
-Or dashboard: **Workers & Pages** → **Create** → **Pages** → **Direct Upload** → upload the folder contents.
+First-time / expired auth: `npx wrangler login`. Or dashboard: **Workers & Pages** → **Create** → **Pages** → **Direct Upload** → upload the folder contents.
 
 ### C2. Custom domains (zone bookfellow.io)
 
@@ -107,12 +108,12 @@ Both should 301 to `https://bookfellow.io/`.
 
 ## Phase E — Geo-block Australia (optional)
 
-**Why:** US-first launch; AU excluded per [business naming canon](/mnt/DataStore/Ventures/project-codex/codex-business/docs/naming/bookfellow-lean-2026-07-21.md). IP-based only (VPN bypasses).
+**Why:** US-first launch; AU excluded per [business naming canon](/mnt/DataStore/Ventures/bookfellow/bookfellow-business/docs/naming/bookfellow-lean-2026-07-21.md). IP-based only (VPN bypasses).
 
 **Redeploy first** (includes `unavailable.html`):
 
 ```bash
-cd /mnt/DataStore/Ventures/project-codex/codex-www/sites/placeholder
+cd /mnt/DataStore/Ventures/bookfellow/bookfellow-www/sites/placeholder
 npx wrangler pages deploy . --project-name=bookfellow-placeholder --branch=main
 ```
 

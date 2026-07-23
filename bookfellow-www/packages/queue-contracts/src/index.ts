@@ -10,8 +10,18 @@ export type PackBuildJob = {
   requestedAt: string;
 };
 
-export type JobPayload = PackBuildJob;
+/** Periodic credit balance scan (Plan 5b) — no Gemini / job_claims. */
+export type CreditScanJob = {
+  type: "credit.scan";
+  requestedAt: string;
+};
+
+export type JobPayload = PackBuildJob | CreditScanJob;
 
 export function isPackBuildJob(job: JobPayload): job is PackBuildJob {
   return job.type === "pack.build";
+}
+
+export function isCreditScanJob(job: JobPayload): job is CreditScanJob {
+  return job.type === "credit.scan";
 }
